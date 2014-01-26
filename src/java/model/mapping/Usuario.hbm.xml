@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/01/2014 14:28:10 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="softwart" name="model.entities.Usuario" table="Usuario">
+    <id name="idUsuario" type="java.lang.Integer">
+      <column name="idUsuario"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="45" name="nombre"/>
+    </property>
+    <property name="apellido" type="string">
+      <column length="45" name="apellido"/>
+    </property>
+    <property name="dni" type="string">
+      <column length="45" name="dni"/>
+    </property>
+    <property name="legajo" type="string">
+      <column length="45" name="legajo"/>
+    </property>
+    <property name="mail" type="string">
+      <column length="45" name="mail"/>
+    </property>
+    <property name="clave" type="string">
+      <column length="45" name="clave"/>
+    </property>
+    <property name="moderador" type="java.lang.Boolean">
+      <column name="moderador"/>
+    </property>
+    <property name="fechaFinSancion" type="timestamp">
+      <column length="19" name="fecha_fin_sancion"/>
+    </property>
+    <property name="avatar" type="string">
+      <column length="450" name="avatar"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="publicacionsForModeradoPor" table="Publicacion">
+      <key>
+        <column name="moderado_por"/>
+      </key>
+      <one-to-many class="model.entities.Publicacion"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="comentariosForUsuario" table="Comentario">
+      <key>
+        <column name="usuario" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Comentario"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="votos" table="Voto">
+      <key>
+        <column name="usuario_votante" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Voto"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="comentariosForModeradoPor" table="Comentario">
+      <key>
+        <column name="moderado_por"/>
+      </key>
+      <one-to-many class="model.entities.Comentario"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="sistemas" table="Sistema">
+      <key>
+        <column name="usuario_modificacion" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Sistema"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="publicacionsForUsuarioPublicador" table="Publicacion">
+      <key>
+        <column name="usuario_publicador" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Publicacion"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="eventos" table="Evento">
+      <key>
+        <column name="usuario_creador" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Evento"/>
+    </set>
+  </class>
+</hibernate-mapping>

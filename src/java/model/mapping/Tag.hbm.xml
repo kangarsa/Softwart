@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/01/2014 14:28:10 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="softwart" name="model.entities.Tag" table="Tag">
+    <id name="idTag" type="java.lang.Integer">
+      <column name="idTag"/>
+      <generator class="identity"/>
+    </id>
+    <property name="texto" type="string">
+      <column length="45" name="texto"/>
+    </property>
+    <property name="cantidad" type="java.lang.Integer">
+      <column name="cantidad"/>
+    </property>
+    <set fetch="select" inverse="false" lazy="true" name="publicacions" table="Tag_has_Publicacion">
+      <key>
+        <column name="idTag" not-null="true"/>
+      </key>
+      <many-to-many entity-name="model.mapping.Publicacion">
+        <column name="idPublicacion" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>
