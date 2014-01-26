@@ -41,7 +41,7 @@
       <key>
         <column name="idPublicacion" not-null="true"/>
       </key>
-      <many-to-many entity-name="model.mapping.Tag">
+      <many-to-many entity-name="model.entities.Tag">
         <column name="idTag" not-null="true"/>
       </many-to-many>
     </set>
