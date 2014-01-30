@@ -34,22 +34,17 @@ public class AuthenticationInterceptor implements Interceptor {
     }
  
     @Override
-    public String intercept(ActionInvocation actionInvocation) throws Exception {
+    public String intercept(ActionInvocation ai) throws Exception {
         System.out.println("inside auth interceptor");
-        //Map<String, Object> sessionAttributes = actionInvocation.getInvocationContext().getSession();
         Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
          
         Usuario u = (Usuario) sessionAttributes.get("usuario");
          
         if(u == null){
-            String str = actionInvocation.getAction().toString();
-            String[] partes = str.split("@");
-            System.out.println("UserNull");
-            sessionAttributes.put("paginaSiguiente", partes[0]);
+            sessionAttributes.put("paginaSiguiente", ai.getProxy().getActionName());
             return Action.LOGIN;
         }else{
-            System.out.println("User NOT Null");
-            return actionInvocation.invoke();
+            return ai.invoke();
         }
     }
  

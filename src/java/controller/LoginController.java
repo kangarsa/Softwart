@@ -20,14 +20,18 @@ import org.apache.struts2.interceptor.SessionAware;
 public class LoginController extends ActionSupport implements SessionAware, ModelDriven<Usuario>{
     private final Usuario u = new Usuario();
     private Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
+    private String siguiente;
+    
+    public String getSiguiente(){
+        return siguiente;
+    }
 
     @Override
     public String execute(){
-        System.out.println("inside execute");
-        if("mateo".equals(u.getMail()) && "admin".equals(u.getClave())){
-            System.out.println("authenticated");
-            u.setNombre("mateo durante");
+        if("admin".equals(u.getMail()) && "admin".equals(u.getClave())){
+            u.setNombre("admin admin");
             sessionAttributes.put("usuario", u);
+            siguiente = (String) sessionAttributes.get("paginaSiguiente");
             return SUCCESS;
         }
         return INPUT;

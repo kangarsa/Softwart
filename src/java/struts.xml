@@ -18,7 +18,7 @@
         
         <action name="login" class="controller.LoginController">
             <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="success">/Vista/Menu.jsp</result>
+            <result name="success" type="redirect">${siguiente}</result>
             <result name="input">/Vista/login.jsp</result>
         </action>
         <action name="home">
