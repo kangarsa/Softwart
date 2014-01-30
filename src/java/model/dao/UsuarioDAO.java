@@ -16,4 +16,6 @@ import model.entities.Usuario;
 public interface UsuarioDAO {
     public boolean agregar(Usuario usuario);
     public ArrayList<Usuario> listar();
+    public Usuario usuarioConMail(String mail);
+    public Usuario getUsuario(Usuario u);
 }

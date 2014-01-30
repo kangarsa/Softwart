@@ -13,7 +13,7 @@
         <default-interceptor-ref name="authStack"></default-interceptor-ref>
         
         <global-results>
-            <result name="login" type="redirect">/login</result>
+            <result name="login">/Vista/login.jsp</result>
         </global-results>
         
         <action name="login" class="controller.LoginController">
@@ -21,13 +21,15 @@
             <result name="success" type="redirect">${siguiente}</result>
             <result name="input">/Vista/login.jsp</result>
         </action>
-        <action name="home">
+        <!--
+        <action name="showLogin">
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <result>/Vista/login.jsp</result>
         </action>
         <action name="welcome" class="controller.WelcomeController">
             <result name="success">/Vista/welcome.jsp</result>
         </action>
+        -->
     </package>
     
     <package name="pacComentario" extends="pacSecure">
