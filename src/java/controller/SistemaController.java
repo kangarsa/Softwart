@@ -47,7 +47,7 @@ public class SistemaController implements ModelDriven<Sistema>{
         if(sistemaDAO.agregar(sistema))
             msg="Se agrego un sistema nuevo";
         else
-            msg="Ocurrio un error al agragar sistema";
+            msg="Ocurrio un error al agregar sistema";
         return "fin";
     }
     

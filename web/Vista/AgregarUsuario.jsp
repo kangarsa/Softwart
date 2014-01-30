@@ -19,7 +19,7 @@
             <s:textfield label="Apellido" name="usuario.apellido" size="40" maxlength="255"/>
             <s:textfield label="Mail" name="usuario.mail" size="40" maxlength="30"/>
             <s:textfield label="Clave" name="usuario.clave" size="40" maxlength="255"/>
-            <s:submit value="Comentar"/>
+            <s:submit value="Agregar"/>
         </s:form>
         <hr>
         <s:label value="%{msg}"/>

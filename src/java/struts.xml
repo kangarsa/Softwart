@@ -47,10 +47,13 @@
             <result name="exito">/Vista/AgregarUsuario.jsp</result>
         </action>
         <action name="listarInicioUsuario" class="controller.UsuarioController" method="listarInicio">
-            <result name="exito">/Vista/ListarUsuario.jsp</result>
+            <result name="exito">/Vista/ListarUsuarios.jsp</result>
         </action>
         <action name="agregarUsuario" class="controller.UsuarioController" method="agregar">
             <result name="fin">/Vista/AgregarUsuario.jsp</result>
+        </action>
+          <action name="listarUsuarios" class="controller.UsuarioController" method="listar">
+            <result name="fin">/Vista/ListarUsuarios.jsp</result>
         </action>
     </package>
 </struts>

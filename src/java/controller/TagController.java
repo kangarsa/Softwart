@@ -43,7 +43,7 @@ public class TagController implements ModelDriven<Tag>{
         if(tagDAO.agregar(tag))
             msg="Se agrego un tag nuevo";
         else
-            msg="Ocurrio un error al agragar tag";
+            msg="Ocurrio un error al agregar tag";
         return "fin";
     }
     

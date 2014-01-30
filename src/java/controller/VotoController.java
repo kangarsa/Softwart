@@ -43,7 +43,7 @@ public class VotoController implements ModelDriven<Voto>{
         if(votoDAO.agregar(voto))
             msg="Se agrego un voto nuevo";
         else
-            msg="Ocurrio un error al agragar voto";
+            msg="Ocurrio un error al agregar voto";
         return "fin";
     }
     
