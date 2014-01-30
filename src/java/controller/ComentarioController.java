@@ -6,11 +6,15 @@
 
 package controller;
 
+import static com.opensymphony.xwork2.ActionContext.getContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
+import java.util.Map;
 import model.dao.ComentarioDAO;
 import model.dao.ComentarioDAOImpl;
 import model.entities.Comentario;
+import model.entities.Publicacion;
+import model.entities.Usuario;
 
 /**
  *
@@ -25,8 +29,6 @@ public class ComentarioController implements ModelDriven<Comentario>{
     public Comentario getModel() {
         return comentario;
     }
-    
-    
     
     public ComentarioController(){
         comentarioDAO=new ComentarioDAOImpl();
@@ -67,6 +69,13 @@ public class ComentarioController implements ModelDriven<Comentario>{
 
     public void setComentario(Comentario comentario) {
         this.comentario = comentario;
+    }
+    
+    public ArrayList<Publicacion> getPublicacionesComentables() {
+        Map<String, Object> session = getContext().getSession();
+        Usuario u = (Usuario) session.get("usuario");
+        ArrayList<Publicacion> listaPublicaciones = comentarioDAO.publicacionesComentablesPara(u);
+        return listaPublicaciones;
     }
     
 }

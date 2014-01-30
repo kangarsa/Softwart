@@ -17,6 +17,16 @@
         <s:form action="agregarComentario" method="post">
             <s:textfield label="Titulo" name="comentario.titulo" size="20" maxlength="30"/>
             <s:textfield label="Contenido" name="comentario.contenido" size="40" maxlength="255"/>
+            <s:select  
+                        tooltip="Choose Your Favourite Publicacion"  
+                        label="Publicacion"  
+                        list="publicacionesComentables"  
+                        name="publicacion"  
+                        listKey="%{idPublicacion}"  
+                        listValue="%{titulo}"  
+                        emptyOption="true"  
+                        headerKey="None"  
+                        headerValue="None"/>  
             <s:submit value="Comentar"/>
         </s:form>
         <hr>

@@ -8,6 +8,8 @@ package model.dao;
 
 import java.util.ArrayList;
 import model.entities.Comentario;
+import model.entities.Publicacion;
+import model.entities.Usuario;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,6 +21,18 @@ import org.hibernate.Transaction;
 public class ComentarioDAOImpl implements ComentarioDAO {
     Transaction transaction = null;
     Session session;
+    
+    @Override
+    public ArrayList<Publicacion> publicacionesComentablesPara(Usuario u) {
+        try{
+            Session sessionLocal;
+            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
+            return (ArrayList<Publicacion>)sessionLocal.createQuery("from Publicacion").list();
+        }
+        catch(HibernateException e){
+            return null;
+        }
+    }
     
     @Override
     public boolean agregar(Comentario comentario) {
