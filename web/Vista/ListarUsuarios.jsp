@@ -25,13 +25,13 @@
                     <td>MAIL</td>
                     <td>DNI</td>
                 </tr>
-            <s:iterator value="%(listaUsuarios)">
+            <s:iterator value="%{listaUsuarios}">
                 <tr>
-                    <td><s:property value="idUsuario"></s:property></td>
-                    <td><s:property value="nombre"></s:property></td>
-                    <td><s:property value="apellido"></s:property></td>
-                    <td><s:property value="mail"></s:property></td>
-                    <td><s:property value="dni"></s:property></td>
+                    <td><s:property value="idUsuario"/></td>
+                    <td><s:property value="nombre"/></td>
+                    <td><s:property value="apellido"/></td>
+                    <td><s:property value="mail"/></td>
+                    <td><s:property value="dni"/></td>
                 </tr>
             </s:iterator>
         </table>
