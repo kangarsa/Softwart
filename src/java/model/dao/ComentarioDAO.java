@@ -8,12 +8,15 @@ package model.dao;
 
 import java.util.ArrayList;
 import model.entities.Comentario;
+import model.entities.Publicacion;
+import model.entities.Usuario;
 
 /**
  *
  * @author agustin
  */
 public interface ComentarioDAO {
+    public ArrayList<Publicacion> publicacionesComentablesPara(Usuario u);
     public boolean agregar(Comentario comentario);
     public ArrayList<Comentario> listar();
 }
