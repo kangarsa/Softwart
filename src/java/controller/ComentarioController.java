@@ -6,6 +6,7 @@
 
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import static com.opensymphony.xwork2.ActionContext.getContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class ComentarioController implements ModelDriven<Comentario>{
     Comentario comentario = new Comentario();
     ArrayList<Comentario> listaComentarios= new ArrayList();
     ComentarioDAO comentarioDAO;
+    Usuario u = (Usuario) ActionContext.getContext().getSession().get("usuario");
     String msg="";
     
     public Comentario getModel() {
@@ -72,9 +74,8 @@ public class ComentarioController implements ModelDriven<Comentario>{
     }
     
     public ArrayList<Publicacion> getPublicacionesComentables() {
-        Map<String, Object> session = getContext().getSession();
-        Usuario u = (Usuario) session.get("usuario");
         ArrayList<Publicacion> listaPublicaciones = comentarioDAO.publicacionesComentablesPara(u);
+        System.out.println(listaPublicaciones);
         return listaPublicaciones;
     }
     
