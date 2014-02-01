@@ -48,7 +48,7 @@ public class ComentarioController implements ModelDriven<Comentario>{
         if(comentarioDAO.agregar(comentario))
             msg="Se agrego un comentario nuevo";
         else
-            msg="Ocurrio un error al agragar comentario";
+            msg="Ocurrio un error al agregar comentario";
         return "fin";
     }
     

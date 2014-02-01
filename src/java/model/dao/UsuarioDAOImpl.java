@@ -40,11 +40,15 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     @Override
     public ArrayList<Usuario> listar() {
         try{
-            Session sessionLocal;
-            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
-            return (ArrayList<Usuario>)sessionLocal.createQuery("from Usuario").list();
+            Session session;
+            Transaction transaction;
+            
+            session=HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            return (ArrayList<Usuario>)session.createQuery("from Usuario").list();
         }
         catch(HibernateException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }

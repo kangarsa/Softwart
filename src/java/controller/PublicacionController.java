@@ -42,7 +42,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
         if(publicacionDAO.agregar(publicacion))
             msg="Se agrego un publicacion nuevo";
         else
-            msg="Ocurrio un error al agragar publicacion";
+            msg="Ocurrio un error al agregar publicacion";
         return "fin";
     }
     

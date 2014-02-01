@@ -40,9 +40,9 @@ public class SancionController implements ModelDriven<Sancion>{
     
     public String agregar(){
         if(sancionDAO.agregar(sancion))
-            msg="Se agrego un comentario nuevo";
+            msg="Se agrego una sancion nueva";
         else
-            msg="Ocurrio un error al agragar comentario";
+            msg="Ocurrio un error al agregar sancion";
         return "fin";
     }
     
