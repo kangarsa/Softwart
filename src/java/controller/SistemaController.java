@@ -72,4 +72,103 @@ public class SistemaController implements ModelDriven<Sistema>{
         this.sistema = sistema;
     }
     
+    public String cambiarTitulo(String titulo) {
+        if(sistemaDAO.cambiarTitulo(titulo))
+            msg="Se cambio el titulo del sistema";
+        else
+            msg="Ocurrio un error al cambiar el titulo del sistema";
+        return "fin";
+    }
+    
+    public String cambiarDescripcion(String descripcion) {
+        if(sistemaDAO.cambiarDescripcion(descripcion))
+            msg="Se cambio la descripcion del sistema";  
+        else
+            msg="Ocurrio un error al cambiar la descripcion del sistema";
+        return "fin";
+    }
+    
+    public String setTag(String tag) {
+        if(sistemaDAO.setTag(tag))
+            msg="Se cambio el tag del sistema";  
+        else
+            msg="Ocurrio un error al cambiar el tag del sistema";
+        return "fin";
+    }
+    
+    public String setUris(String uris) {
+        if(sistemaDAO.setUris(uris))
+            msg="Se cambio la uri del sistema";  
+        else
+            msg="Ocurrio un error al cambiar la uri del sistema";
+        return "fin";
+    }
+    
+    public String setBanner(String banner) {
+        if(sistemaDAO.setBanner(banner) )
+            msg="Se cambio el banner del sistema";  
+        else
+            msg="Ocurrio un error al cambiar el banner del sistema";
+        return "fin";
+    }
+    
+    public String setEstilo(String estilo) {
+        if(sistemaDAO.setEstilo(estilo))
+            msg="Se cambio el estilo del sistema";  
+        else
+            msg="Ocurrio un error al cambiar el estilo del sistema";
+        return "fin";
+    }
+    
+    
+    public String habilitarSitio() {
+        if(sistemaDAO.habilitarSitio())
+            msg="Se habilito el sitio";  
+        else
+            msg="Ocurrio un al habilitar el sitio";
+        return "fin";
+    }
+    
+    
+    public String deshabilitarSitio() {
+        if(sistemaDAO.deshabilitarSitio())
+            msg="Se deshabilito el sitio";  
+        else
+            msg="Ocurrio un al deshabilitar el sitio";
+        return "fin";
+    }
+            
+    public String activarModerarPublicaciones() {
+        if(sistemaDAO.deshabilitarSitio())
+            msg="Se activaron las moderaciones";  
+        else
+            msg="Ocurrio un al intentar activar las moderaciones";
+        return "fin";
+    }
+    
+    
+    public String desactivarModerarPublicaciones() {
+        if(sistemaDAO.deshabilitarSitio())
+            msg="Se desactivaron las moderaciones";  
+        else
+            msg="Ocurrio un al intentar desactivar las moderaciones";
+        return "fin";
+    }
+    
+    public String cambiarPuntosParaSancionar(Integer limitePuntos) {
+        if(sistemaDAO.deshabilitarSitio())
+            msg="Se cambiaron los puntos para sancionar";  
+        else
+            msg="Ocurrio un error al intentar cambiar los puntos para sancionar";
+        return "fin";
+    }
+    
+    public String cambiarTiempoDeSancion(Integer tiempo) {
+        if(sistemaDAO.deshabilitarSitio())
+            msg="Se cambio el tiempo de sancion";  
+        else
+            msg="Ocurrio un al intentar cambiar el tiempo de sancion";
+        return "fin";
+    }
+    
 }
