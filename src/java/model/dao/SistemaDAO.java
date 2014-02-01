@@ -24,8 +24,8 @@ public interface SistemaDAO {
     public boolean setUris(String uris);
     public boolean setBanner(String banner);
     public boolean setEstilo(String estilo);
-    public boolean abilitarSitio();
-    public boolean desabilitarSitio();
+    public boolean habilitarSitio();
+    public boolean deshabilitarSitio();
     public boolean activarModerarPublicaciones();
     public boolean desactivarModerarPublicaciones();
     public boolean cambiarPuntosParaSancionar(Integer limitePuntos);
