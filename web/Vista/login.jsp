@@ -14,10 +14,14 @@
     </head>
     <body bgColor="lightBlue">
         <h3>Bienvenido, por favor ingresa tus datos.</h3>
-        <s:fielderror />
+        <s:actionmessage />
+        <s:fielderror>
+            <s:param>usuarioInexistente</s:param>
+        </s:fielderror>
         <s:form action="login" method="post">
             <s:textfield name="mail" label="E-mail"></s:textfield>
             <s:textfield name="clave" label="Clave" type="password"></s:textfield>
+            <s:hidden name="from" value="login" />
             <s:submit value="Ingresar"></s:submit>
         </s:form>
     </body>

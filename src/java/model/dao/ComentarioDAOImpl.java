@@ -25,11 +25,14 @@ public class ComentarioDAOImpl implements ComentarioDAO {
     @Override
     public ArrayList<Publicacion> publicacionesComentablesPara(Usuario u) {
         try{
-            Session sessionLocal;
-            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
-            return (ArrayList<Publicacion>)sessionLocal.createQuery("from Publicacion").list();
+            session= HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction= session.beginTransaction();
+            ArrayList<Publicacion> res = (ArrayList<Publicacion>)session.createQuery("from Publicacion").list();
+            transaction.commit();
+            return res;
         }
         catch(HibernateException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }

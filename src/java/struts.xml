@@ -16,10 +16,14 @@
             <result name="login">/Vista/login.jsp</result>
         </global-results>
         
-        <action name="login" class="controller.LoginController">
+        <action name="login" class="controller.LogController" method="login">
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="success" type="redirect">${siguiente}</result>
             <result name="input">/Vista/login.jsp</result>
+        </action>
+        <action name="logout" class="controller.LogController" method="logout">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success">/Vista/login.jsp</result>
         </action>
         <!--
         <action name="showLogin">
