@@ -10,7 +10,9 @@ import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
 import model.dao.PublicacionDAO;
 import model.dao.PublicacionDAOImpl;
+import model.entities.Comentario;
 import model.entities.Publicacion;
+import model.entities.Usuario;
 
 /**
  *
@@ -19,9 +21,15 @@ import model.entities.Publicacion;
 public class PublicacionController implements ModelDriven<Publicacion>{
     Publicacion publicacion = new Publicacion();
     ArrayList<Publicacion> listaPublicacion= new ArrayList();
+    ArrayList<Comentario> listaDeComentarios= new ArrayList();
     PublicacionDAO publicacionDAO;
     String msg="";
     
+    /**
+     *
+     * @return
+     */
+    @Override
     public Publicacion getModel() {
         return publicacion;
     }
@@ -40,7 +48,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     
     public String agregar(){
         if(publicacionDAO.agregar(publicacion))
-            msg="Se agrego un publicacion nuevo";
+            msg="Se agrego una publicacion nueva";
         else
             msg="Ocurrio un error al agregar publicacion";
         return "fin";
@@ -65,6 +73,16 @@ public class PublicacionController implements ModelDriven<Publicacion>{
 
     public void setPublicacion(Publicacion publicacion) {
         this.publicacion = publicacion;
+    }
+    
+    public String listarComentarios(Publicacion publicacion){
+        listaDeComentarios = (ArrayList<Comentario>) publicacionDAO.listarComentarios(publicacion);
+        return "fin";
+    }
+    
+    public String publicacionDeUsuario(Usuario usuario){
+        listaPublicacion = publicacionDAO.publicacionesDeUsuario(usuario);
+        return "fin";
     }
     
 }
