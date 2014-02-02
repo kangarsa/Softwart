@@ -29,7 +29,7 @@ public class SistemaDAOImpl implements SistemaDAO {
             Session sessionLocal;
             sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
             
-            return sistema = (Sistema) sessionLocal.createQuery("from Sistema sis order by sis.idSistema").uniqueResult();
+            return sistema = (Sistema) sessionLocal.createQuery("from Sistema sis order by sis.idSistema desc").list().get(0);
              
         }
         catch(HibernateException e){

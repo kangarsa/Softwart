@@ -11,6 +11,10 @@
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
     
+    <listener>
+            <listener-class>listener.DbConfigContextListener</listener-class>
+    </listener>
+
     <filter-mapping>
         <filter-name>struts 2</filter-name>
         <url-pattern>/*</url-pattern>
