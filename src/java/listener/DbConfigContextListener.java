@@ -49,7 +49,7 @@ public class DbConfigContextListener implements ServletContextListener{
                     "softwart, multimedia, unlp", 
                     "http://www.unlp.edu.ar/", 
                     "banner.jpg", 
-                    "estilo.css", 
+                    "estilo1.css", 
                     false, 
                     true, 
                     20, 
