@@ -23,5 +23,9 @@
         <hr>
         <a href="agregarInicioUsuario">Agregar Usuario</a><br>
         <a href="listarInicioUsuario">Listar Usuarios</a><br>
+        <h1>Menu Usuario</h1>
+        <hr>
+        <a href="agregarInicioPublicacion">Agregar Publicacion</a><br>
+        <a href="listarInicioPublicacion">Listar Publicaciones</a><br>
     </body>
 </html>
