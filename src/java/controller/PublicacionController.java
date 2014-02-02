@@ -56,6 +56,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     
     public String listar(){
         listaPublicacion=publicacionDAO.listar();
+        System.out.println("AAAAAAAAAAAAAAAAAAAA°°°!!!!!" + listaPublicacion);
         return "fin";
     }
 

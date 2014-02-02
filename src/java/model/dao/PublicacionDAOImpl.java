@@ -43,11 +43,14 @@ public class PublicacionDAOImpl implements PublicacionDAO {
     @Override
     public ArrayList<Publicacion> listar() {
         try{
-            Session sessionLocal;
-            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
-            return (ArrayList<Publicacion>)sessionLocal.createQuery("from Publicacion").list();
+            Session session;
+            session=HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            
+            return (ArrayList<Publicacion>)session.createQuery("from Publicacion").list();
         }
         catch(HibernateException e){
+             System.out.println(e.getMessage());
             return null;
         }
     }
