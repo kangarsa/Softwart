@@ -62,4 +62,19 @@
             <result name="fin">/Vista/ListarUsuarios.jsp</result>
         </action>
     </package>
+    
+    <package name="pacPublicacion" extends="struts-default">
+        <action name="agregarInicioPublicacion" class="controller.PublicacionController" method="agregarInicio">
+            <result name="exito">/Vista/AgregarPublicacion.jsp</result>
+        </action>
+        <action name="listarInicioPublicacion" class="controller.UsuarioController" method="listarInicio">
+            <result name="exito">/Vista/ListarPublicaciones.jsp</result>
+        </action>
+        <action name="agregarPublicacion" class="controller.PublicacionController" method="agregar">
+            <result name="fin">/Vista/AgregarPublicacion.jsp</result>
+        </action>
+          <action name="listarPublicaciones" class="controller.PublicacionController" method="listar">
+            <result name="fin">/Vista/ListarPublicaciones.jsp</result>
+        </action>
+    </package>
 </struts>
