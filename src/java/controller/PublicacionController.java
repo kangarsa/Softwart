@@ -6,8 +6,11 @@
 
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 import model.dao.PublicacionDAO;
 import model.dao.PublicacionDAOImpl;
 import model.entities.Comentario;
@@ -47,6 +50,16 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     }
     
     public String agregar(){
+        
+        Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
+        
+        Usuario usuarioPublicador = (Usuario) sessionAttributes.get("usuario");
+        
+        publicacion.setUsuarioByUsuarioPublicador(usuarioPublicador);
+        usuarioPublicador.getPublicacionsForUsuarioPublicador().add(publicacion);
+        
+        System.out.println("QUE PASOOOOO" + publicacion.getUsuarioByUsuarioPublicador());
+        
         if(publicacionDAO.agregar(publicacion))
             msg="Se agrego una publicacion nueva";
         else
@@ -56,7 +69,6 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     
     public String listar(){
         listaPublicacion=publicacionDAO.listar();
-        System.out.println("AAAAAAAAAAAAAAAAAAAA°°°!!!!!" + listaPublicacion);
         return "fin";
     }
 

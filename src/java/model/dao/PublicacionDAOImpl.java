@@ -29,11 +29,14 @@ public class PublicacionDAOImpl implements PublicacionDAO {
         try{
             session= HibernateUtil.getSessionFactory().getCurrentSession();
             transaction= session.beginTransaction();
+            System.out.println("NOOOOOOOOOOOOO!!!!" + publicacion);
+            System.out.println("POR FAVOOOOOR!!!!!" + publicacion.getUsuarioByUsuarioPublicador());
             session.save(publicacion);
             transaction.commit();
             return true;
         }
         catch(HibernateException e){
+            System.out.println(e);
             if(transaction != null)
                 transaction.rollback();
             return false;
