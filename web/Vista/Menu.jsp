@@ -6,13 +6,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
+<%@taglib uri="/struts-tags" prefix="s"%>
+<s:set var="varPag" value="%{'menu'}" />
 <html>
     <head>
         <s:include value="head.jsp" />
     </head>
     <body>
+        <s:include value="nav.jsp" />
         <h1>Menu Comentario</h1>
         <hr>
         <a href="agregarInicioComentario">Agregar Comentario</a><br>

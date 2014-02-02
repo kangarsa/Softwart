@@ -7,11 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<s:set var="varPag" value="%{'usuario'}" />
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <s:include value="head.jsp" />
     </head>
     <body>
+        <s:include value="nav.jsp" />
         <h1>Lista de Usuarios</h1>
         <hr>
         <s:form action="listarUsuarios" method="post">
