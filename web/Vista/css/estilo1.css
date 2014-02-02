@@ -1,0 +1,285 @@
+html {
+  margin: 0 0 0 0 ;
+  padding:0 0 0 0 ;
+  background-color:#DADADA ;
+}
+
+body {
+  font-size: 1em;
+  width:60.125em ;
+  padding:0 0 0 0 ;
+  margin:0 0 0 0;
+  margin-left:auto ;
+  margin-right:auto ;
+}
+
+
+/* HEADER */
+
+.header {
+  width:100% ;
+  height:9.25em ;
+}
+
+.infoGeneral_temas {
+  width:100% ;
+  height:1.875em ;
+  background-color:#000 ;
+  background-repeat:no-repeat ;
+}
+
+.temas {
+  float:right ;
+  width:7.188em ;
+  height:1.875em ;
+  background-color:#999999 ;
+}
+
+.temas p {
+  margin:0 0 0 0 ;
+  padding:0 0 0 0 ;
+  width:3.125em;
+  color:#FFF ;
+  font-weight:bold ;
+  line-height:2.5em ; 
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif ;
+  font-size:0.75em ;
+  padding-left:1.5em;
+  float:left ;
+}
+
+.temas a {
+  display:block ;
+  width: 0.5em ;
+  height: 0.5em ;
+  border:1px solid #FFF ;
+  float:right ;
+  margin-top:0.625em;
+  margin-right:0.35em ;
+  
+}
+.temas a:hover {
+  border:1px solid #000 ;
+}
+
+.temas a#tema_1 {
+  background-color:#CC3300 ;
+  margin-right:1.625em  ;
+}
+
+.temas a#tema_2 {
+  
+}
+
+
+.marca {
+  background-image:url(../images/tema_1/marca_bkg.png) ;
+  background-repeat:repeat-x ;
+  height:7em ;
+  width:100% ;
+  margin-top:0.375em ;
+}
+
+.marca a {
+  background-image:url(../images/tema_1/marca_logo.png) ;
+  width:17.813em ;
+  height:2.438em ;
+  display:block ;
+  background-repeat:no-repeat ;
+  position:relative ;
+  left:1.563em ;
+  top:2.4em ;
+}
+
+/** NAV **/ 
+
+.nav {
+  margin-top:0.375em ;
+  background-image:url(../images/tema_1/nav_bkg.gif) ;
+  background-repeat:repeat-x ;
+  width:100% ;
+  height:2.188em ;
+}
+
+.nav ul {
+  margin:0 0 0 0;
+  padding:0 0 0 0 ;
+  list-style:none;
+  position:relative ;
+  left:1.563em ;
+  top:0.188em ;
+}
+
+.nav ul li {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif ;
+  font-size:0.75em ;
+  font-weight:bold ;
+  float:left ;
+  padding-right:1.125em;
+  list-style-type: none;
+}
+ /*
+.nav ul li:last-child {
+  float:right ;
+  margin-right:2.188em;
+}
+*/
+ 
+.nav ul li a {
+  text-decoration:none ;
+  color:#FFF ;
+  height:4.188em ;
+  line-height:1.688em ;
+  display:block ;
+}
+
+.nav ul li a:hover {
+  background-image:url(../images/tema_2/menu_flecha_seleccion.png) ;
+  background-repeat:no-repeat ;
+  background-position:center center ;
+  color:#CCC ;
+}
+
+.nav ul li#itemMarcado a {
+  background-image:url(../images/tema_1/menu_flecha_seleccion.png) ;
+  background-repeat:no-repeat ;
+  background-position:center center ;
+}
+
+
+/** CONTENIDO **/
+
+.edit_comment {
+  font-size: 1em;
+  float:left;
+  display:block;
+}
+
+
+.section h1{
+  margin-top: 0em;
+  padding-top: 1em;
+}
+
+.section {
+  background-color:#FFF ;
+  width:100%;
+  min-height:50em;
+  margin-top:-0.5em ;
+  padding-bottom:1.8em ;
+  padding-top:0.900em ;
+  background-image:url(../images/tema_1/section_bkg.png) ;
+  background-position:right bottom ;
+  background-repeat:no-repeat;
+}
+
+.article {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif ;
+  color:#000 ;
+  font-size:0.75em ;
+  padding-top:0.625em ;
+  width:25em ;
+  margin-left:1.25em;
+  
+}
+
+.buscador{
+  background-color: #888;
+  margin-top:-1.1em;
+  padding-bottom:0.938em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.buscador h3{
+  padding-top: 0.5em;
+  padding-left: 1em;
+  padding-right: 0.5em;
+}
+
+.paginador {
+  background-color: #EEE;
+  color: #000;
+  border:#000 1px solid;
+  text-align: center;
+  font-style: oblique;
+  font-weight: bold;
+  margin-bottom: -0.5em;
+  padding: 0.4em
+}
+
+.paginador a {
+  color: #000;
+  font-weight: bold;
+}
+
+.article h3 a {
+  font-size: 2em;
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+h3 a {
+  font-size: 1em;
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+a {
+  font-size: 1em;
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.descripcion a {
+  color: #000;
+  text-decoration: none;
+}
+
+.descripcion {
+  font-family: serif;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: medium;
+  line-height: 100%;
+  word-spacing: normal;
+  letter-spacing: normal;
+  text-decoration: none;
+  text-transform: none;
+  text-align: left;
+  text-indent: 0ex;
+}
+
+hr {
+  width: 80%;
+}
+
+/** FOOTER **/
+
+.footer {
+  width:98% ;
+  background-image:url(../images/tema_1/footer_bkg.png) ;
+  background-repeat:repeat-x ;
+  height:11em ;
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif ;
+  color:#FFF ;
+  font-size:0.75em ;
+  padding-left: 1.563em ;
+  padding-top:1em;
+  background-color:#666666 ;
+  margin-top:0.375em ;
+}
+
+img.imagen{
+  width: 19.500em;
+  height: 12.500em;
+  /*float:right;*/
+}
+
+.audio{
+  /*float:right;*/
+}
