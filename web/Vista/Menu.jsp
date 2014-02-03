@@ -29,5 +29,6 @@
         <hr>
         <a href="agregarInicioPublicacion">Agregar Publicacion</a><br>
         <a href="listarInicioPublicacion">Listar Publicaciones</a><br>
+        <s:include value="footer.jsp" />
     </body>
 </html>

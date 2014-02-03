@@ -25,5 +25,6 @@
         </s:form>
         <hr>
         <s:label value="%{msg}"/>
+        <s:include value="footer.jsp" />
     </body>
 </html>

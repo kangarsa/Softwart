@@ -16,5 +16,6 @@
         <s:include value="nav.jsp" />
         <h1>Lista de comentarios</h1>
         <hr>
+        <s:include value="footer.jsp" />
     </body>
 </html>
