@@ -5,15 +5,16 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="/struts-tags" prefix="s" %> 
 <!DOCTYPE html>
+<%@taglib uri="/struts-tags" prefix="s"%>
+<s:set var="varPag" value="%{'menu'}" />
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Page</title>
+        <s:include value="head.jsp" />
     </head>
-    <body bgColor="lightBlue">
-        <h3>Bienvenido, por favor ingresa tus datos.</h3>
+    <body>
+        <s:include value="nav.jsp" />
+        <h3>Bienvenido, por favor ingrese sus datos.</h3>
         <s:actionmessage />
         <s:fielderror>
             <s:param>usuarioInexistente</s:param>
@@ -24,8 +25,6 @@
             <s:hidden name="from" value="login" />
             <s:submit value="Ingresar"></s:submit>
         </s:form>
+        <s:include value="footer.jsp" />
     </body>
 </html>
-
-
-

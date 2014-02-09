@@ -8,7 +8,6 @@ package model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.entities.Comentario;
 import model.entities.Publicacion;
 import model.entities.Usuario;
 import org.hibernate.HibernateException;
@@ -29,8 +28,6 @@ public class PublicacionDAOImpl implements PublicacionDAO {
         try{
             session= HibernateUtil.getSessionFactory().getCurrentSession();
             transaction= session.beginTransaction();
-            System.out.println("NOOOOOOOOOOOOO!!!!" + publicacion);
-            System.out.println("POR FAVOOOOOR!!!!!" + publicacion.getUsuarioByUsuarioPublicador());
             session.save(publicacion);
             transaction.commit();
             return true;

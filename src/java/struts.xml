@@ -63,7 +63,7 @@
         </action>
     </package>
     
-    <package name="pacPublicacion" extends="struts-default">
+    <package name="pacPublicacion" extends="pacSecure">
         <action name="agregarInicioPublicacion" class="controller.PublicacionController" method="agregarInicio">
             <result name="exito">/Vista/AgregarPublicacion.jsp</result>
         </action>
