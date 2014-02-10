@@ -6,11 +6,14 @@
 
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
+import java.util.Map;
 import model.dao.EventoDAO;
 import model.dao.EventoDAOImpl;
 import model.entities.Evento;
+import model.entities.Usuario;
 
 /**
  *
@@ -39,12 +42,16 @@ public class EventoController implements ModelDriven<Evento>{
     }
     
     public String agregar(){
+        Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
+        Usuario usuarioPublicador = (Usuario) sessionAttributes.get("usuario");
+        evento.setEventoByUsuarioPublicador(usuarioPublicador);
         if(eventoDAO.agregar(evento))
             msg="Se agrego un evento nuevo";
         else
             msg="Ocurrio un error al agregar evento";
         return "fin";
     }
+    
     
     public String listar(){
         listaEventos = eventoDAO.listar();

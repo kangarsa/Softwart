@@ -29,6 +29,10 @@
         <hr>
         <a href="agregarInicioPublicacion">Agregar Publicacion</a><br>
         <a href="listarInicioPublicacion">Listar Publicaciones</a><br>
+        <hr>
+        <h1>Menu Evento</h1>
+        <a href="agregarInicioEvento">Agregar Evento</a><br>
+        <a href="listarInicioEvento">Listar Eventos</a><br>
         <s:include value="footer.jsp" />
     </body>
 </html>

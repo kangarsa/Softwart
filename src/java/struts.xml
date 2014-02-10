@@ -77,4 +77,21 @@
             <result name="fin">/Vista/ListarPublicaciones.jsp</result>
         </action>
     </package>
+    
+    <package name="pacEvento" extends="pacSecure">
+        <action name="agregarInicioEvento" class="controller.EventoController" method="agregarInicio">
+            <result name="exito">/Vista/AgregarEvento.jsp</result>
+        </action>
+        <action name="listarInicioEvento" class="controller.EventoController" method="listarInicio">
+            <result name="exito">/Vista/ListarEventos.jsp</result>
+          </action>
+        <action name="agregarEvento" class="controller.EventoController" method="agregar">
+            <result name="fin">/Vista/AgregarEvento.jsp</result>
+        </action>
+        <action name="listarEventos" class="controller.EventoController" method="listar">
+            <result name="fin">/Vista/ListarEventos.jsp</result>
+        </action>
+    </package>
+    
+
 </struts>

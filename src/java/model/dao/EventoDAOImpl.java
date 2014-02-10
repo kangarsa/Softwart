@@ -39,11 +39,14 @@ public class EventoDAOImpl implements EventoDAO {
     @Override
     public ArrayList<Evento> listar() {
         try{
-            Session sessionLocal;
-            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
-            return (ArrayList<Evento>)sessionLocal.createQuery("from Evento").list();
+            Session session;
+            session=HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            
+            return (ArrayList<Evento>)session.createQuery("from Evento").list();
         }
         catch(HibernateException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }

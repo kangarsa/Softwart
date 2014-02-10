@@ -102,6 +102,14 @@ public class Evento  implements java.io.Serializable {
         this.fechaFin = fechaFin;
     }
 
+    public void setEventoByUsuarioPublicador(Usuario usuarioPublicador) {
+        this.usuario = usuarioPublicador;
+    }
+    
+    public Usuario getEventoByUsuarioPublicador() {
+        return this.usuario;
+    }
+
 
 
 
