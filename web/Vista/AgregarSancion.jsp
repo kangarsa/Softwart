@@ -14,11 +14,21 @@
     </head>
     <body>
         <s:include value="nav.jsp" />
-        <h1>Crear Usuario</h1>
+        <h1>Sancionar</h1>
         <hr>
         <s:form action="agregarSancion" method="post">
             <s:textfield label="Motivo" name="sancion.motivo" size="20" maxlength="30"/>
             <s:textfield label="Puntos" name="sancion.puntos" size="40" maxlength="255"/>
+            <s:select  
+                        tooltip="Publicacion a Sancionar"  
+                        label="Publicacion"  
+                        list="publicacionesComentables" 
+                        name="publicacion"
+                        listKey="%{idPublicacion}" 
+                        listValue="%{titulo}"  
+                        emptyOption="true"  
+                        headerKey="None"  
+                        headerValue="None"/>  
             <s:submit value="Agregar"/>
         </s:form>
         <hr>

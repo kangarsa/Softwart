@@ -7,7 +7,9 @@
 package model.dao;
 
 import java.util.ArrayList;
+import model.entities.Publicacion;
 import model.entities.Sancion;
+import model.entities.Usuario;
 
 /**
  *
@@ -16,4 +18,6 @@ import model.entities.Sancion;
 public interface SancionDAO {
     public boolean agregar(Sancion sancion);
     public ArrayList<Sancion> listar();
+
+    public ArrayList<Publicacion> publicacionesSancionablesPara(Usuario u);
 }

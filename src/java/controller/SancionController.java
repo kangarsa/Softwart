@@ -6,11 +6,14 @@
 
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
 import model.dao.SancionDAO;
 import model.dao.SancionDAOImpl;
+import model.entities.Publicacion;
 import model.entities.Sancion;
+import model.entities.Usuario;
 
 /**
  *
@@ -20,6 +23,7 @@ public class SancionController implements ModelDriven<Sancion>{
     Sancion sancion = new Sancion();
     ArrayList<Sancion> listaSanciones= new ArrayList();
     SancionDAO sancionDAO;
+    Usuario u = (Usuario) ActionContext.getContext().getSession().get("usuario");
     String msg="";
     
     public Sancion getModel() {
@@ -67,6 +71,12 @@ public class SancionController implements ModelDriven<Sancion>{
 
     public void setSancion (Sancion sancion) {
         this.sancion = sancion;
+    }
+    
+    public ArrayList<Publicacion> getPublicacionesSancionables() {
+        ArrayList<Publicacion> listaPublicaciones = sancionDAO.publicacionesSancionablesPara(u);
+        System.out.println(listaPublicaciones);
+        return listaPublicaciones;
     }
     
 }

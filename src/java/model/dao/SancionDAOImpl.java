@@ -7,7 +7,9 @@
 package model.dao;
 
 import java.util.ArrayList;
+import model.entities.Publicacion;
 import model.entities.Sancion;
+import model.entities.Usuario;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -47,6 +49,21 @@ public class SancionDAOImpl implements SancionDAO{
             //NO SE MUESTRA Y NO SE PORQUE
             System.out.println("A VER: " + transaction);
             return (ArrayList<Sancion>)session.createQuery("from Sancion").list();
+        }
+        catch(HibernateException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Publicacion> publicacionesSancionablesPara(Usuario u) {
+        try{
+            session= HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction= session.beginTransaction();
+            ArrayList<Publicacion> res = (ArrayList<Publicacion>)session.createQuery("from Publicacion").list();
+            transaction.commit();
+            return res;
         }
         catch(HibernateException e){
             System.out.println(e.getMessage());
