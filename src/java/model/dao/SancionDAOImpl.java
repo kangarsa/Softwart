@@ -39,11 +39,17 @@ public class SancionDAOImpl implements SancionDAO{
     @Override
     public ArrayList<Sancion> listar() {
         try{
-            Session sessionLocal;
-            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
-            return (ArrayList<Sancion>)sessionLocal.createQuery("from Sancion").list();
+            Session session;
+            Transaction transaction;
+            
+            session=HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            //NO SE MUESTRA Y NO SE PORQUE
+            System.out.println("A VER: " + transaction);
+            return (ArrayList<Sancion>)session.createQuery("from Sancion").list();
         }
         catch(HibernateException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }

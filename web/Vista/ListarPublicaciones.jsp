@@ -25,6 +25,8 @@
                     <td>TITULO</td>
                     <td>DESCRIPCION</td>
                     <td>CONTENIDO</td>
+                    <td>EDITAR</td>
+                    <td>BORRAR</td>
                 </tr>
             <s:iterator value="%{listaPublicaciones}">
                 <tr>
@@ -32,6 +34,8 @@
                     <td><s:property value="titulo"/></td>
                     <td><s:property value="descripcion"/></td>
                     <td><s:property value="contenido"/></td>
+                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
+                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
                 </tr>
             </s:iterator>
         </table>

@@ -10,7 +10,7 @@
     <div class="header">
       <div class="infoGeneral_temas"></div>
       <div class="marca">
-           <a class="marca_podcast" title="Podcasts"></a>
+           <a class="marca_podcast" title="Softwart"></a>
       </div>
     </div>
     <div class="nav">

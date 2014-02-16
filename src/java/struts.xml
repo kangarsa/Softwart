@@ -46,6 +46,9 @@
         <action name="agregarComentario" class="controller.ComentarioController" method="agregar">
             <result name="fin">/Vista/AgregarComentario.jsp</result>
         </action>
+        <action name="listarComentarios" class="controller.ComentarioController" method="listar">
+            <result name="fin">/Vista/ListarComentarios.jsp</result>
+        </action>
     </package>
     
     <package name="pacUsuario" extends="struts-default">
@@ -58,7 +61,7 @@
         <action name="agregarUsuario" class="controller.UsuarioController" method="agregar">
             <result name="fin">/Vista/AgregarUsuario.jsp</result>
         </action>
-          <action name="listarUsuarios" class="controller.UsuarioController" method="listar">
+        <action name="listarUsuarios" class="controller.UsuarioController" method="listar">
             <result name="fin">/Vista/ListarUsuarios.jsp</result>
         </action>
     </package>
@@ -90,6 +93,21 @@
         </action>
         <action name="listarEventos" class="controller.EventoController" method="listar">
             <result name="fin">/Vista/ListarEventos.jsp</result>
+        </action>
+    </package>
+    
+    <package name="pacSancion" extends="pacSecure">
+        <action name="agregarInicioSancion" class="controller.SancionController" method="agregarInicio">
+            <result name="exito">/Vista/AgregarSancion.jsp</result>
+        </action>
+        <action name="listarInicioSancion" class="controller.SancionController" method="listarInicio">
+            <result name="exito">/Vista/ListarSanciones.jsp</result>
+          </action>
+        <action name="agregarSancion" class="controller.SancionController" method="agregar">
+            <result name="fin">/Vista/AgregarSancion.jsp</result>
+        </action>
+        <action name="listarSanciones" class="controller.SancionController" method="listar">
+            <result name="fin">/Vista/ListarSanciones.jsp</result>
         </action>
     </package>
     

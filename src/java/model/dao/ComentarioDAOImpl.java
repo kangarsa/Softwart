@@ -56,11 +56,13 @@ public class ComentarioDAOImpl implements ComentarioDAO {
     @Override
     public ArrayList<Comentario> listar() {
         try{
-            Session sessionLocal;
-            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
-            return (ArrayList<Comentario>)sessionLocal.createQuery("from Comentario").list();
+            Session sessionl;
+            session=HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            return (ArrayList<Comentario>)session.createQuery("from Comentario").list();
         }
         catch(HibernateException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }

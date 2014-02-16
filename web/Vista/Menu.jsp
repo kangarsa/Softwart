@@ -33,6 +33,9 @@
         <h1>Menu Evento</h1>
         <a href="agregarInicioEvento">Agregar Evento</a><br>
         <a href="listarInicioEvento">Listar Eventos</a><br>
+        <h1>Menu Sancion</h1>
+        <a href="agregarInicioSancion ">Agregar Sancion</a><br>
+        <a href="listarInicioSancion">Listar Sanciones</a><br>
         <s:include value="footer.jsp" />
     </body>
 </html>
