@@ -36,6 +36,10 @@
         <h1>Menu Sancion</h1>
         <a href="agregarInicioSancion ">Agregar Sancion</a><br>
         <a href="listarInicioSancion">Listar Sanciones</a><br>
+        <h1>Menu Tag</h1>
+        <a href="agregarInicioTag ">Agregar Tag</a><br>
+        <a href="listarInicioTag">Listar Tags</a><br>
         <s:include value="footer.jsp" />
+        
     </body>
 </html>

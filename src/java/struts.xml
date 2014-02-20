@@ -111,5 +111,20 @@
         </action>
     </package>
     
+    <package name="pacTag" extends="pacSecure">
+        <action name="agregarInicioTag" class="controller.TagController" method="agregarInicio">
+            <result name="exito">/Vista/AgregarTag.jsp</result>
+        </action>
+        <action name="listarInicioTag" class="controller.TagController" method="listarInicio">
+            <result name="exito">/Vista/ListarTags.jsp</result>
+          </action>
+        <action name="agregarTag" class="controller.TagController" method="agregar">
+            <result name="fin">/Vista/AgregarTag.jsp</result>
+        </action>
+        <action name="listarTags" class="controller.TagController" method="listar">
+            <result name="fin">/Vista/ListarTags.jsp</result>
+        </action>
+    </package>
+    
 
 </struts>

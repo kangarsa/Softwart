@@ -8,6 +8,7 @@ package model.dao;
 
 import java.util.ArrayList;
 import model.entities.Tag;
+import model.entities.Usuario;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
@@ -24,6 +25,7 @@ public class TagDAOImpl implements TagDAO {
     @Override
     public boolean agregar(Tag tag) {
         try{
+            System.out.println("TAG: " + tag);
             session= HibernateUtil.getSessionFactory().getCurrentSession();
             transaction= session.beginTransaction();
             session.save(tag);
@@ -44,11 +46,15 @@ public class TagDAOImpl implements TagDAO {
     @Override
     public ArrayList<Tag> listar() {
         try{
-            Session sessionLocal;
-            sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
-            return (ArrayList<Tag>)sessionLocal.createQuery("from Tag").list();
+            org.hibernate.Session session;
+            Transaction transaction;
+            
+            session=HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            return (ArrayList<Tag>)session.createQuery("from Tag").list();
         }
         catch(HibernateException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }
