@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import static org.eclipse.persistence.sessions.server.ConnectionPolicy.ExclusiveMode.Transactional;
 
 
 //import org.springframework.test.context.transaction.*; 
@@ -17,7 +16,7 @@ import static org.eclipse.persistence.sessions.server.ConnectionPolicy.Exclusive
  * @author agustin
  */
 
-public  class GenericDaoHibernateJPA<T> extends GenericDAO<T> {
+public  class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 	protected Class<T> persistentClass;
 	
 	private EntityManager entityManager;

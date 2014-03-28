@@ -9,7 +9,7 @@ package controller;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.List;
 import model.dao.UsuarioDAO;
-import model.dao.UsuarioDAOImpl;
+import model.dao.UsuarioDaoHibernateJPA;
 import model.entities.Usuario;
 
 /**
@@ -29,7 +29,7 @@ public class UsuarioController implements ModelDriven<Usuario>{
     
     
     public UsuarioController(){
-        usuarioDAO=new UsuarioDAOImpl();
+        usuarioDAO=new UsuarioDaoHibernateJPA();
     }
     
     public String agregarInicio(){

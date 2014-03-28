@@ -153,5 +153,9 @@ public class Publicacion implements java.io.Serializable {
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
+    
+    public void setPublicador(Usuario publicador) {
+        this.usuarioPublicador = publicador;
+    }
 
 }

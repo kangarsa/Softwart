@@ -1,4 +1,4 @@
-package info.ttps.dao.util.api;
+package model.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;

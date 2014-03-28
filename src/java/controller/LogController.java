@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.Map;
 import model.dao.UsuarioDAO;
-import model.dao.UsuarioDAOImpl;
+import model.dao.UsuarioDaoHibernateJPA;
 import model.entities.Usuario;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -21,7 +21,7 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class LogController extends ActionSupport implements SessionAware, ModelDriven<Usuario>{
     private final Usuario u = new Usuario();
-    private final UsuarioDAO uDAO = new UsuarioDAOImpl();
+    private final UsuarioDAO uDAO = new UsuarioDaoHibernateJPA();
     private Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
     private String siguiente;
     private String from;
