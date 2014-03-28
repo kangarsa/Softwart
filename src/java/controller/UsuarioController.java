@@ -7,7 +7,7 @@
 package controller;
 
 import com.opensymphony.xwork2.ModelDriven;
-import java.util.ArrayList;
+import java.util.List;
 import model.dao.UsuarioDAO;
 import model.dao.UsuarioDAOImpl;
 import model.entities.Usuario;
@@ -18,7 +18,7 @@ import model.entities.Usuario;
  */
 public class UsuarioController implements ModelDriven<Usuario>{
     Usuario usuario = new Usuario();
-    ArrayList<Usuario> listaUsuarios= new ArrayList();
+    List<Usuario> listaUsuarios;
     UsuarioDAO usuarioDAO;
     String msg="";
     
@@ -57,7 +57,7 @@ public class UsuarioController implements ModelDriven<Usuario>{
         return usuario;
     }
 
-    public ArrayList<Usuario> getListaUsuarios() {
+    public List<Usuario> getListaUsuarios() {
         return listaUsuarios;
     }
 

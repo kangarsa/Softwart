@@ -6,7 +6,7 @@
 
 package model.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 import model.entities.Usuario;
 
 /**
@@ -15,7 +15,7 @@ import model.entities.Usuario;
  */
 public interface UsuarioDAO {
     public boolean agregar(Usuario usuario);
-    public ArrayList<Usuario> listar();
+    public List<Usuario> listar();
     public Usuario usuarioConMail(String mail);
     public Usuario getUsuario(Usuario u);
 }
