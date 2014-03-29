@@ -7,10 +7,10 @@
       <column name="idPublicacion"/>
       <generator class="identity"/>
     </id>
-    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioByUsuarioPublicador">
+    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioPublicador">
       <column name="usuario_publicador" not-null="true"/>
     </many-to-one>
-    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioByModeradoPor">
+    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioModerador">
       <column name="moderado_por"/>
     </many-to-one>
     <property name="titulo" type="string">
@@ -51,19 +51,19 @@
       </key>
       <one-to-many class="model.entities.Comentario"/>
     </set>
-    <set fetch="select" inverse="true" lazy="true" name="sancions" table="Sancion">
+    <!--<set fetch="select" inverse="true" lazy="true" name="sanciones" table="Sancion">
       <key>
         <column name="publicacion_relacionada"/>
       </key>
       <one-to-many class="model.entities.Sancion"/>
-    </set>
+    </set>-->
     <set fetch="select" inverse="true" lazy="true" name="votos" table="Voto">
       <key>
         <column name="publicacion_votada" not-null="true"/>
       </key>
       <one-to-many class="model.entities.Voto"/>
     </set>
-    <set fetch="select" inverse="true" lazy="true" name="eventos" table="Evento">
+    <set fetch="select" inverse="true" lazy="true" name="evento" table="Evento">
       <key>
         <column name="publicacion_relacionada"/>
       </key>

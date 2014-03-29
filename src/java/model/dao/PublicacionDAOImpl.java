@@ -158,7 +158,7 @@ public class PublicacionDAOImpl implements PublicacionDAO {
             sessionLocal=HibernateUtil.getSessionFactory().getCurrentSession();
             
             Integer idUser = usuario.getIdUsuario();
-            return (ArrayList<Publicacion>)sessionLocal.createQuery("from Publicacion p where p.usuarioByUsuarioPublicador ='" + idUser + "'").list();
+            return (ArrayList<Publicacion>)sessionLocal.createQuery("from Publicacion p where p.usuarioPublicador ='" + idUser + "'").list();
         
         }
         catch(HibernateException e){

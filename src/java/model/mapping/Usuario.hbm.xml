@@ -34,13 +34,13 @@
     <property name="avatar" type="string">
       <column length="450" name="avatar"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="publicacionsForModeradoPor" table="Publicacion">
+    <set fetch="select" inverse="true" lazy="true" name="publicacionesModeradas" table="Publicacion">
       <key>
         <column name="moderado_por"/>
       </key>
       <one-to-many class="model.entities.Publicacion"/>
     </set>
-    <set fetch="select" inverse="true" lazy="true" name="comentariosForUsuario" table="Comentario">
+    <set fetch="select" inverse="true" lazy="true" name="comentarios" table="Comentario">
       <key>
         <column name="usuario" not-null="true"/>
       </key>
@@ -52,7 +52,7 @@
       </key>
       <one-to-many class="model.entities.Voto"/>
     </set>
-    <set fetch="select" inverse="true" lazy="true" name="comentariosForModeradoPor" table="Comentario">
+    <!--<set fetch="select" inverse="true" lazy="true" name="comentariosForModeradoPor" table="Comentario">
       <key>
         <column name="moderado_por"/>
       </key>
@@ -63,8 +63,8 @@
         <column name="usuario_modificacion" not-null="true"/>
       </key>
       <one-to-many class="model.entities.Sistema"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="publicacionsForUsuarioPublicador" table="Publicacion">
+    </set>-->
+    <set fetch="select" inverse="true" lazy="true" name="publicaciones" table="Publicacion">
       <key>
         <column name="usuario_publicador" not-null="true"/>
       </key>

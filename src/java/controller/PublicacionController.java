@@ -52,7 +52,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     public String agregar(){
         Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
         Usuario usuarioPublicador = (Usuario) sessionAttributes.get("usuario");
-        publicacion.setPublicador(usuarioPublicador);
+        publicacion.setUsuarioPublicador(usuarioPublicador);
         if(publicacionDAO.agregar(publicacion))
             msg="Se agrego una publicacion nueva";
         else

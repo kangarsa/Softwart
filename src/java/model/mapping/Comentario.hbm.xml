@@ -7,10 +7,10 @@
       <column name="idComentario"/>
       <generator class="identity"/>
     </id>
-    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioByUsuario">
+    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioComentador">
       <column name="usuario" not-null="true"/>
     </many-to-one>
-    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioByModeradoPor">
+    <many-to-one class="model.entities.Usuario" fetch="select" name="usuarioModerador">
       <column name="moderado_por"/>
     </many-to-one>
     <many-to-one class="model.entities.Publicacion" fetch="select" name="publicacion">
@@ -28,7 +28,7 @@
     <property name="fechaBaja" type="timestamp">
       <column length="19" name="fecha_baja"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="sancions" table="Sancion">
+    <set fetch="select" inverse="true" lazy="true" name="sanciones" table="Sancion">
       <key>
         <column name="comentario_relacionado"/>
       </key>

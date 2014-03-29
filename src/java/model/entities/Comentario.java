@@ -33,7 +33,7 @@ public class Comentario implements java.io.Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaBaja;
 
-    private Set sancions = new HashSet(0);
+    private Set sanciones = new HashSet(0);
 
     public Comentario() {
     }
@@ -86,12 +86,12 @@ public class Comentario implements java.io.Serializable {
         this.fechaBaja = fechaBaja;
     }
 
-    public Set getSancions() {
-        return this.sancions;
+    public Set getSanciones() {
+        return this.sanciones;
     }
 
-    public void setSancions(Set sancions) {
-        this.sancions = sancions;
+    public void setSanciones(Set sanciones) {
+        this.sanciones = sanciones;
     }
     
     public Usuario getUsuarioComentador() {

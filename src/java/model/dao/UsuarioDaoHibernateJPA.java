@@ -40,11 +40,14 @@ public class UsuarioDaoHibernateJPA extends GenericDaoHibernateJPA<Usuario> impl
 
     @Override
     public List<Usuario> listar() {
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName());
-                if(query.getResultList().isEmpty()){
-                    return null;
-                }
-        return query.getResultList();        
+        /**System.out.println(" Y ESTO QUE ES??? " + this.getEntityManager());
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) (Query) this.getEntityManager().createQuery("select e from Usuario"); // + getPersistentClass().getSimpleName());
+        //System.out.println("ERRRROOOOORRRRR " + query);
+        if(query.getResultList().isEmpty()){
+            return null;
+        }
+        return query.getResultList(); **/
+        return this.findAll();
     }
 
 

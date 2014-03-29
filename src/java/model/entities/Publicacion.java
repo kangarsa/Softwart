@@ -44,6 +44,7 @@ public class Publicacion implements java.io.Serializable {
     private List<Comentario> comentarios;
     @ManyToOne
     private Usuario usuarioModerador;
+
     @ManyToOne
     private Usuario usuarioPublicador;
 
@@ -153,9 +154,21 @@ public class Publicacion implements java.io.Serializable {
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
-    
-    public void setPublicador(Usuario publicador) {
-        this.usuarioPublicador = publicador;
+
+    public Usuario getUsuarioModerador() {
+        return usuarioModerador;
     }
 
+    public Usuario getUsuarioPublicador() {
+        return usuarioPublicador;
+    }
+
+    
+    public void setUsuarioModerador(Usuario usuarioModerador) {
+        this.usuarioModerador = usuarioModerador;
+    }
+
+    public void setUsuarioPublicador(Usuario usuarioPublicador) {
+        this.usuarioPublicador = usuarioPublicador;
+    }
 }
