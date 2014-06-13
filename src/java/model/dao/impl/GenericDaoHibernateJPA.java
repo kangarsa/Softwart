@@ -34,9 +34,9 @@ import javax.persistence.Query;
         @Before
         public void initEmfAndEm() {
             Logger.getLogger("org").setLevel(Level.ALL);
-            System.out.println("PERSISTENCEE: " + Persistence.PERSISTENCE_PROVIDER);
+
             entityManagerFactory = Persistence.createEntityManagerFactory("softwart");
-            System.out.println("FACTORY((((((((((((:" + entityManagerFactory);
+
             entityManager = entityManagerFactory.createEntityManager();
         }
 	
@@ -67,7 +67,7 @@ import javax.persistence.Query;
 	}
 
 	public EntityManager getEntityManager() {
-                System.out.println("&&&&&&&&&&EM: " + entityManager);
+
 		return entityManager;
 	}
 
@@ -109,9 +109,9 @@ import javax.persistence.Query;
 	@SuppressWarnings("unchecked")
 	
 	public List<T> findAll() {
-            System.out.println("WHAAAT???  " + entityManagerFactory);
+
                 EntityManager entityManager = entityManagerFactory.createEntityManager();
-                System.out.println("QUE PASA??? " + this.getEntityManager());
+
 		Query query = this.getEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e");
 		List<T> resultList = (List<T>)query.getResultList();
 		return resultList;

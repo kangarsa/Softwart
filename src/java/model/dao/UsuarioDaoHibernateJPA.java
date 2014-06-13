@@ -9,7 +9,6 @@ package model.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.dao.impl.GenericDaoHibernateJPA;
 import model.entities.Usuario;
@@ -91,4 +90,5 @@ public class UsuarioDaoHibernateJPA extends GenericDaoHibernateJPA<Usuario> impl
                 }
         return (Usuario) query.getResultList().get(0);
     }
+    
 }

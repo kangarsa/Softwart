@@ -69,4 +69,8 @@ public class UsuarioController implements ModelDriven<Usuario>{
         this.usuario = usuario;
     }
     
+    public String editar(){
+        return "fin";
+    }
+    
 }

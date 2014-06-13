@@ -36,7 +36,7 @@
                     <td><s:property value="apellido"/></td>
                     <td><s:property value="mail"/></td>
                     <td><s:property value="dni"/></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="editarUsuario"/>"><img src="images/tema_1/edit.gif" alt="editar"> <s:param name="idUsuario" value="idUsuario"/></a></td>
                     <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
                 </tr>
             </s:iterator>
