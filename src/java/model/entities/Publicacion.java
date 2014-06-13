@@ -36,7 +36,7 @@ public class Publicacion implements java.io.Serializable {
     @OneToOne
     private Evento evento;
 
-    @OneToMany(mappedBy = "publicacion")
+    @OneToMany
     private List<Tag> tags;
     @OneToMany(mappedBy = "publicacion")
     private List<Voto> votos;

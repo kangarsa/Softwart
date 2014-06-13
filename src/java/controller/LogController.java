@@ -25,6 +25,7 @@ public class LogController extends ActionSupport implements SessionAware, ModelD
     private Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
     private String siguiente;
     private String from;
+    private String mail;
 
     public String getFrom() {
         return from;
@@ -55,9 +56,12 @@ public class LogController extends ActionSupport implements SessionAware, ModelD
         return SUCCESS;
     }
 
+ 
+    
     public String login() {
         if(getFrom() != null){
-            Usuario user = uDAO.getUsuario(u);
+            Usuario user = uDAO.usuarioConMail(u.getMail());
+            System.out.println("*****USER: " + user);
             if(user != null){
                 sessionAttributes.put("usuario", user);
                 siguiente = (String) sessionAttributes.get("paginaSiguiente");

@@ -7,10 +7,13 @@
 package model.dao;
 
 import java.util.ArrayList;
+import javax.persistence.TypedQuery;
+import model.dao.impl.GenericDaoHibernateJPA;
 import model.entities.Comentario;
 import model.entities.Publicacion;
 import model.entities.Usuario;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,32 +21,29 @@ import org.hibernate.Transaction;
  *
  * @author agustin
  */
-public class ComentarioDAOImpl implements ComentarioDAO {
+public class ComentarioDAOImpl extends GenericDaoHibernateJPA<Usuario> implements ComentarioDAO {
     Transaction transaction = null;
     Session session;
     
     @Override
     public ArrayList<Publicacion> publicacionesComentablesPara(Usuario u) {
         try{
-            session= HibernateUtil.getSessionFactory().getCurrentSession();
-            transaction= session.beginTransaction();
-            ArrayList<Publicacion> res = (ArrayList<Publicacion>)session.createQuery("from Publicacion").list();
-            transaction.commit();
-            return res;
+            
+            TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.dni = '" + u.getDni() +"'");
+            
+
         }
         catch(HibernateException e){
             System.out.println(e.getMessage());
             return null;
         }
+        return null;
     }
     
     @Override
     public boolean agregar(Comentario comentario) {
         try{
-            session= HibernateUtil.getSessionFactory().getCurrentSession();
-            transaction= session.beginTransaction();
-            session.save(comentario);
-            transaction.commit();
+;
             return true;
         }
         catch(HibernateException e){
@@ -56,15 +56,13 @@ public class ComentarioDAOImpl implements ComentarioDAO {
     @Override
     public ArrayList<Comentario> listar() {
         try{
-            Session sessionl;
-            session=HibernateUtil.getSessionFactory().getCurrentSession();
-            transaction = session.beginTransaction();
-            return (ArrayList<Comentario>)session.createQuery("from Comentario").list();
+ 
         }
         catch(HibernateException e){
             System.out.println(e.getMessage());
             return null;
         }
+        return null;
     }
     
 }

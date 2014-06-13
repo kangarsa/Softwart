@@ -7,10 +7,8 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionContext;
-import static com.opensymphony.xwork2.ActionContext.getContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
-import java.util.Map;
 import model.dao.ComentarioDAO;
 import model.dao.ComentarioDAOImpl;
 import model.entities.Comentario;

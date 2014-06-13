@@ -25,10 +25,7 @@ public class SancionDAOImpl implements SancionDAO{
     @Override
     public boolean agregar(Sancion sancion) {
         try{
-            session= HibernateUtil.getSessionFactory().getCurrentSession();
-            transaction= session.beginTransaction();
-            session.save(sancion);
-            transaction.commit();
+
             return true;
         }
         catch(HibernateException e){
@@ -41,34 +38,25 @@ public class SancionDAOImpl implements SancionDAO{
     @Override
     public ArrayList<Sancion> listar() {
         try{
-            Session session;
-            Transaction transaction;
-            
-            session=HibernateUtil.getSessionFactory().getCurrentSession();
-            transaction = session.beginTransaction();
-            //NO SE MUESTRA Y NO SE PORQUE
-            System.out.println("A VER: " + transaction);
-            return (ArrayList<Sancion>)session.createQuery("from Sancion").list();
+ 
         }
         catch(HibernateException e){
             System.out.println(e.getMessage());
             return null;
         }
+        return null;
     }
 
     @Override
     public ArrayList<Publicacion> publicacionesSancionablesPara(Usuario u) {
         try{
-            session= HibernateUtil.getSessionFactory().getCurrentSession();
-            transaction= session.beginTransaction();
-            ArrayList<Publicacion> res = (ArrayList<Publicacion>)session.createQuery("from Publicacion").list();
-            transaction.commit();
-            return res;
+
         }
         catch(HibernateException e){
             System.out.println(e.getMessage());
             return null;
         }
+        return null;
     }
 
 }

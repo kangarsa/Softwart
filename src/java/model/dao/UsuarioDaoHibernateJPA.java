@@ -7,10 +7,13 @@
 package model.dao;
 
 import java.util.List;
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import model.dao.impl.GenericDaoHibernateJPA;
 import model.entities.Usuario;
-import org.hibernate.Query;
+
 
 /**
  *
@@ -19,6 +22,11 @@ import org.hibernate.Query;
 public class UsuarioDaoHibernateJPA extends GenericDaoHibernateJPA<Usuario> implements
 		UsuarioDAO {
 
+    public UsuarioDaoHibernateJPA(){
+        super(Usuario.class);
+        this.initEmfAndEm();
+    }
+    
     /**
 	public StudentDaoHibernateJPA(){
 		super(Student.class);
@@ -31,38 +39,53 @@ public class UsuarioDaoHibernateJPA extends GenericDaoHibernateJPA<Usuario> impl
 		}
 		return (Student) query.getResultList().get(0);
 	}
+     * @param usuario
+     * @return 
  */
     
     @Override
     public boolean agregar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = this.getEntityManager();
+        EntityTransaction etx = em.getTransaction();
+        etx.begin();
+        em.persist(usuario);
+        em.flush();
+        etx.commit();
+        em.close();
+        return true;
     }
 
     @Override
     public List<Usuario> listar() {
-        /**System.out.println(" Y ESTO QUE ES??? " + this.getEntityManager());
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) (Query) this.getEntityManager().createQuery("select e from Usuario"); // + getPersistentClass().getSimpleName());
-        //System.out.println("ERRRROOOOORRRRR " + query);
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e " );
+
         if(query.getResultList().isEmpty()){
             return null;
         }
-        return query.getResultList(); **/
-        return this.findAll();
+        return query.getResultList();
+
     }
 
 
     @Override
     public Usuario usuarioConMail(String mail) {
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.mail = '" + mail +"'");
-                if(query.getResultList().isEmpty()){
-                    return null;
-                }
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>)  em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.mail = '" + mail +"'");     
+        
+        if(query.getResultList().isEmpty()){
+            return null;
+        }
         return (Usuario) query.getResultList().get(0);        
     }
 
     @Override
     public Usuario getUsuario(Usuario u) {
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.dni = '" + u.getDni() +"'");
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.dni = '" + u.getDni() +"'");
 		if(query.getResultList().isEmpty()){
                     return null;
                 }

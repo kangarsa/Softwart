@@ -20,9 +20,10 @@ import javax.persistence.Query;
 /**
  *
  * @author agustin
+ * @param <T>
  */
 
-public  class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
+    public  class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 	protected Class<T> persistentClass;
 	
 	private EntityManager entityManager;
@@ -33,8 +34,9 @@ public  class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
         @Before
         public void initEmfAndEm() {
             Logger.getLogger("org").setLevel(Level.ALL);
-
-            entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
+            System.out.println("PERSISTENCEE: " + Persistence.PERSISTENCE_PROVIDER);
+            entityManagerFactory = Persistence.createEntityManagerFactory("softwart");
+            System.out.println("FACTORY((((((((((((:" + entityManagerFactory);
             entityManager = entityManagerFactory.createEntityManager();
         }
 	
@@ -65,6 +67,7 @@ public  class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 	}
 
 	public EntityManager getEntityManager() {
+                System.out.println("&&&&&&&&&&EM: " + entityManager);
 		return entityManager;
 	}
 
