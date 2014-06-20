@@ -26,22 +26,6 @@ public class UsuarioDaoHibernateJPA extends GenericDaoHibernateJPA<Usuario> impl
         this.initEmfAndEm();
     }
     
-    /**
-	public StudentDaoHibernateJPA(){
-		super(Student.class);
-	}
-	
-	public Student findByUsername(String s){
-		javax.persistence.Query query = this.getEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e where e.username = '"+s+"'");
-		if(query.getResultList().size() == 0){
-			return null;
-		}
-		return (Student) query.getResultList().get(0);
-	}
-     * @param usuario
-     * @return 
- */
-    
     @Override
     public boolean agregar(Usuario usuario) {
         EntityManager em = this.getEntityManager();
@@ -89,6 +73,45 @@ public class UsuarioDaoHibernateJPA extends GenericDaoHibernateJPA<Usuario> impl
                     return null;
                 }
         return (Usuario) query.getResultList().get(0);
+    }
+    
+    @Override
+    public Usuario getUsuarioById(Integer idUsuario) {
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.idUsuario = " + idUsuario +" ");
+		if(query.getResultList().isEmpty()){
+                    return null;
+                }
+        return (Usuario) query.getResultList().get(0);
+    }
+
+    @Override
+    public boolean editar(Usuario usuario) {
+        EntityManager em = this.getEntityManager();
+        
+        Usuario usuarioAux = em.find(Usuario.class, usuario.getIdUsuario());
+        
+        em.getTransaction().begin();
+        usuarioAux.setApellido(usuario.getApellido());
+        usuarioAux.setIdUsuario(usuario.getIdUsuario());
+        usuarioAux.setNombre(usuario.getNombre());
+        usuarioAux.setMail(usuario.getMail());
+        usuario.setModerador(usuario.getModerador());
+        
+        em.getTransaction().commit();
+        
+        return true;
+    }
+
+    @Override
+    public void eliminar(Usuario usuario) {
+        EntityManager em = this.getEntityManager();
+        
+        em.getTransaction().begin();
+        usuario = em.merge(usuario);
+        em.remove(usuario);
+        em.getTransaction().commit();
     }
     
 }

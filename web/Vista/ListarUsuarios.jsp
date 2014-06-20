@@ -10,6 +10,7 @@
 <s:set var="varPag" value="%{'usuario'}" />
 <html>
     <head>
+        <title>LISTAR USUARIOS</title>
         <s:include value="head.jsp" />
     </head>
     <body>
@@ -36,8 +37,8 @@
                     <td><s:property value="apellido"/></td>
                     <td><s:property value="mail"/></td>
                     <td><s:property value="dni"/></td>
-                    <td><a href="<s:url action="editarUsuario"/>"><img src="images/tema_1/edit.gif" alt="editar"> <s:param name="idUsuario" value="idUsuario"/></a></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="editarUsuario" > <s:param name="idUsuario"><s:property value="idUsuario"/></s:param></s:url>"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="eliminarUsuario" > <s:param name="idUsuario"><s:property value="idUsuario"/></s:param></s:url>"><img src="images/tema_1/delete.gif" alt="borrar"></a></td>
                 </tr>
             </s:iterator>
         </table>

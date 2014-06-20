@@ -4,6 +4,8 @@ package model.entities;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -35,7 +37,8 @@ public class Usuario implements java.io.Serializable {
     private List<Voto> votos;
     @OneToMany(mappedBy = "usuarioPublicador")
     private List<Publicacion> publicaciones;
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", orphanRemoval=true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Evento> eventos;
 
     public Usuario() {

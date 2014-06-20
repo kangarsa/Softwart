@@ -9,9 +9,10 @@ package controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import model.dao.EventoDAO;
-import model.dao.EventoDAOImpl;
+import model.dao.EventoDaoHibernateJPA;
 import model.entities.Evento;
 import model.entities.Usuario;
 
@@ -21,7 +22,7 @@ import model.entities.Usuario;
  */
 public class EventoController implements ModelDriven<Evento>{
     Evento evento = new Evento();
-    ArrayList<Evento> listaEventos= new ArrayList();
+    List<Evento> listaEventos= new ArrayList();
     EventoDAO eventoDAO;
     String msg="";
     
@@ -30,7 +31,7 @@ public class EventoController implements ModelDriven<Evento>{
     }
     
     public EventoController(){
-        eventoDAO=new EventoDAOImpl();
+        eventoDAO=new EventoDaoHibernateJPA();
     }
     
     public String agregarInicio(){
@@ -41,28 +42,30 @@ public class EventoController implements ModelDriven<Evento>{
         return "exito";
     }
     
+    public String listar(){
+        listaEventos=eventoDAO.listar();
+        System.out.println("LISTAR EVENTOS: " + listaEventos);
+        return "fin";
+    }
+    
     public String agregar(){
         Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
         Usuario usuarioPublicador = (Usuario) sessionAttributes.get("usuario");
+        System.out.println("USUARIOPUBLICADOR: " + usuarioPublicador.getNombre());
         evento.setEventoByUsuarioPublicador(usuarioPublicador);
         if(eventoDAO.agregar(evento))
             msg="Se agrego un evento nuevo";
         else
             msg="Ocurrio un error al agregar evento";
         return "fin";
-    }
-    
-    
-    public String listar(){
-        listaEventos = eventoDAO.listar();
-        return "fin";
+  
     }
 
     public Evento getEvento() {
         return evento;
     }
 
-    public ArrayList<Evento> getListaEventos() {
+    public List<Evento> getListaEventos() {
         return listaEventos;
     }
 
@@ -72,6 +75,21 @@ public class EventoController implements ModelDriven<Evento>{
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+    
+    public String editar(){
+        evento = eventoDAO.getEventoById(evento.getIdEvento());
+        return "fin";
+    }
+    
+    public String modificar(){
+        eventoDAO.editar(evento);
+        return "fin";
+    }
+    
+    public String eliminar(){
+        eventoDAO.eliminar(evento);
+        return "fin";
     }
     
 }

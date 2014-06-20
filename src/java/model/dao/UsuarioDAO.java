@@ -18,4 +18,8 @@ public interface UsuarioDAO {
     public List<Usuario> listar();
     public Usuario usuarioConMail(String mail);
     public Usuario getUsuario(Usuario u);
+    public Usuario getUsuarioById(Integer idUsuario);
+    public boolean editar(Usuario usuario);
+
+    public void eliminar(Usuario usuario);
 }

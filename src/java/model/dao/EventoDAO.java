@@ -6,7 +6,7 @@
 
 package model.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 import model.entities.Evento;
 
 /**
@@ -15,5 +15,11 @@ import model.entities.Evento;
  */
 public interface EventoDAO {
     public boolean agregar(Evento evento);
-    public ArrayList<Evento> listar();
+    public List<Evento> listar();
+
+    public boolean editar(Evento evento);
+
+    public Evento getEventoById(Integer idEvento);
+
+    public void eliminar(Evento evento);
 }

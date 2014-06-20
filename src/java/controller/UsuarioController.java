@@ -18,10 +18,28 @@ import model.entities.Usuario;
  */
 public class UsuarioController implements ModelDriven<Usuario>{
     Usuario usuario = new Usuario();
+    Integer idUsuario;
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public UsuarioDAO getUsuarioDAO() {
+        return usuarioDAO;
+    }
+
+    public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
+        this.usuarioDAO = usuarioDAO;
+    }
     List<Usuario> listaUsuarios;
     UsuarioDAO usuarioDAO;
     String msg="";
     
+    @Override
     public Usuario getModel() {
         return usuario;
     }
@@ -70,7 +88,19 @@ public class UsuarioController implements ModelDriven<Usuario>{
     }
     
     public String editar(){
+        usuario = usuarioDAO.getUsuarioById(usuario.getIdUsuario());
         return "fin";
     }
+    
+    public String modificar(){
+        usuarioDAO.editar(usuario);
+        return "fin";
+    }
+    
+    public String eliminar(){
+        usuarioDAO.eliminar(usuario);
+        return "fin";
+    }
+    
     
 }

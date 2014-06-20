@@ -67,6 +67,12 @@
         <action name="editarUsuario" class="controller.UsuarioController" method="editar">
             <result name="fin">/Vista/EditarUsuario.jsp</result>
         </action>
+        <action name="modificarUsuario" class="controller.UsuarioController" method="modificar">
+            <result name="fin">/Vista/ListarUsuarios.jsp</result>
+        </action>
+        <action name="eliminarUsuario" class="controller.UsuarioController" method="eliminar">
+            <result name="fin">/Vista/ListarUsuarios.jsp</result>
+        </action>
     </package>
     
     <package name="pacPublicacion" extends="pacSecure">
@@ -95,6 +101,15 @@
             <result name="fin">/Vista/AgregarEvento.jsp</result>
         </action>
         <action name="listarEventos" class="controller.EventoController" method="listar">
+            <result name="fin">/Vista/ListarEventos.jsp</result>
+        </action>
+        <action name="editarEvento" class="controller.EventoController" method="editar">
+            <result name="fin">/Vista/EditarEvento.jsp</result>
+        </action>
+        <action name="modificarEvento" class="controller.EventoController" method="modificar">
+            <result name="fin">/Vista/ListarEventos.jsp</result>
+        </action>
+        <action name="eliminarEvento" class="controller.EventoController" method="eliminar">
             <result name="fin">/Vista/ListarEventos.jsp</result>
         </action>
     </package>

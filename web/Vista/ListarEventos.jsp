@@ -34,8 +34,8 @@
                     <td><s:property value="titulo"/></td>
                     <td><s:property value="descripcion"/></td>
                     <td><s:property value="contenido"/></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="editarEvento" > <s:param name="idEvento"><s:property value="idEvento"/></s:param></s:url>"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="eliminarEvento" > <s:param name="idEvento"><s:property value="idEvento"/></s:param></s:url>"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
                 </tr>
             </s:iterator>
         </table>
