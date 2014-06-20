@@ -97,7 +97,7 @@ public class UsuarioDaoHibernateJPA extends GenericDaoHibernateJPA<Usuario> impl
         usuarioAux.setIdUsuario(usuario.getIdUsuario());
         usuarioAux.setNombre(usuario.getNombre());
         usuarioAux.setMail(usuario.getMail());
-        usuario.setModerador(usuario.getModerador());
+        usuarioAux.setModerador(usuario.getModerador());
         
         em.getTransaction().commit();
         

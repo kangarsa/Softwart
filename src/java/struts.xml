@@ -49,6 +49,15 @@
         <action name="listarComentarios" class="controller.ComentarioController" method="listar">
             <result name="fin">/Vista/ListarComentarios.jsp</result>
         </action>
+        <action name="editarComentario" class="controller.ComentarioController" method="editar">
+            <result name="fin">/Vista/EditarUsuario.jsp</result>
+        </action>
+        <action name="modificarComentario" class="controller.ComentarioController" method="modificar">
+            <result name="fin">/Vista/ListarUsuarios.jsp</result>
+        </action>
+        <action name="eliminarComentario" class="controller.ComentarioController" method="eliminar">
+            <result name="fin">/Vista/ListarUsuarios.jsp</result>
+        </action>
     </package>
     
     <package name="pacUsuario" extends="struts-default">

@@ -8,7 +8,6 @@ package model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.entities.Comentario;
 import model.entities.Publicacion;
 import model.entities.Usuario;
 
@@ -18,12 +17,12 @@ import model.entities.Usuario;
  */
 public interface PublicacionDAO {
     public boolean agregar(Publicacion publicacion);
-    public ArrayList<Publicacion> listar();
-    public boolean eliminar(Publicacion publicacion);
+    public List<Publicacion> listar();
+    public void eliminar(Publicacion publicacion);
     public boolean editar(Publicacion publicacion);
     public boolean eliminarComentarios(Publicacion publicacion);
     public List listarComentarios(Publicacion publicacion);
     public List listarTags(Publicacion publicacion);
-    public ArrayList<Publicacion> publicacionesDeUsuario(Usuario usuario);
+    public List<Publicacion> publicacionesDeUsuario(Usuario usuario);
     
 }

@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<s:set var="paginaActual" value="comentario"/> 
+<s:set var="varPag" value="%{'comentario'}" />
 <html>
     <head>
         <s:include value="head.jsp" />

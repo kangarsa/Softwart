@@ -9,10 +9,10 @@ package controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import model.dao.PublicacionDAO;
-import model.dao.PublicacionDAOImpl;
+import model.dao.PublicacionDaoHibernateJPA;
 import model.entities.Comentario;
 import model.entities.Publicacion;
 import model.entities.Usuario;
@@ -23,8 +23,8 @@ import model.entities.Usuario;
  */
 public class PublicacionController implements ModelDriven<Publicacion>{
     Publicacion publicacion = new Publicacion();
-    ArrayList<Publicacion> listaPublicacion= new ArrayList();
-    ArrayList<Comentario> listaDeComentarios= new ArrayList();
+    List<Publicacion> listaPublicacion= new ArrayList();
+    List<Comentario> listaDeComentarios= new ArrayList();
     PublicacionDAO publicacionDAO;
     String msg="";
     
@@ -38,7 +38,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     }
     
     public PublicacionController(){
-        publicacionDAO=new PublicacionDAOImpl();
+        publicacionDAO=new PublicacionDaoHibernateJPA();
     }
     
     public String agregarInicio(){
@@ -69,7 +69,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
         return publicacion;
     }
 
-    public ArrayList<Publicacion> getListaPublicaciones() {
+    public List<Publicacion> getListaPublicaciones() {
         return listaPublicacion;
     }
 
@@ -82,7 +82,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     }
     
     public String listarComentarios(Publicacion publicacion){
-        listaDeComentarios = (ArrayList<Comentario>) publicacionDAO.listarComentarios(publicacion);
+        listaDeComentarios = (List<Comentario>) publicacionDAO.listarComentarios(publicacion);
         return "fin";
     }
     

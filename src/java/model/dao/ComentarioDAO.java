@@ -6,7 +6,7 @@
 
 package model.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 import model.entities.Comentario;
 import model.entities.Publicacion;
 import model.entities.Usuario;
@@ -16,7 +16,9 @@ import model.entities.Usuario;
  * @author agustin
  */
 public interface ComentarioDAO {
-    public ArrayList<Publicacion> publicacionesComentablesPara(Usuario u);
+    public List<Publicacion> publicacionesComentablesPara(Usuario u);
     public boolean agregar(Comentario comentario);
-    public ArrayList<Comentario> listar();
+    public List<Comentario> listar();
+    public boolean editar(Comentario comentario);
+    public void eliminar(Comentario comentario);
 }
