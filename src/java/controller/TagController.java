@@ -8,8 +8,9 @@ package controller;
 
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
+import java.util.List;
 import model.dao.TagDAO;
-import model.dao.TagDAOImpl;
+import model.dao.TagDaoHibernateJPA;
 import model.entities.Tag;
 
 /**
@@ -18,7 +19,7 @@ import model.entities.Tag;
  */
 public class TagController implements ModelDriven<Tag>{
     Tag tag = new Tag();
-    ArrayList<Tag> listaTags= new ArrayList();
+    List<Tag> listaTags= new ArrayList();
     TagDAO tagDAO;
     String msg="";
     
@@ -28,7 +29,7 @@ public class TagController implements ModelDriven<Tag>{
     }
     
     public TagController(){
-        tagDAO=new TagDAOImpl();
+        tagDAO=new TagDaoHibernateJPA();
     }
     
     public String agregarInicio(){
@@ -56,7 +57,7 @@ public class TagController implements ModelDriven<Tag>{
         return tag;
     }
 
-    public ArrayList<Tag> getListaTags() {
+    public List<Tag> getListaTags() {
         return listaTags;
     }
 
@@ -67,6 +68,21 @@ public class TagController implements ModelDriven<Tag>{
     public void setTag(Tag tag) {
         this.tag = tag;
     }
+
     
+    public String editar(){
+        tag = tagDAO.getTagById(tag.getIdTag());
+        return "fin";
+    }
+    
+    public String modificar(){
+        tagDAO.editar(tag);
+        return "fin";
+    }
+    
+    public String eliminar(){
+        tagDAO.eliminar(tag);
+        return "fin";
+    }
     
 }

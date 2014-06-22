@@ -91,4 +91,24 @@ public class PublicacionController implements ModelDriven<Publicacion>{
         return "fin";
     }
     
+    public String editar(){
+        publicacion = publicacionDAO.getPublicacionById(publicacion.getIdPublicacion());
+        return "fin";
+    }
+    
+    public String modificar(){
+        publicacionDAO.editar(publicacion);
+        return "fin";
+    }
+    
+    public String eliminar(){
+        publicacionDAO.eliminar(publicacion);
+        return "fin";
+    }
+    
+    public String mostrar(){
+        publicacion = publicacionDAO.getPublicacionById(publicacion.getIdPublicacion());
+        return "fin";
+    }
+    
 }

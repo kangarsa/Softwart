@@ -31,11 +31,11 @@
             <s:iterator value="%{listaPublicaciones}">
                 <tr>
                     <td><s:property value="idPublicacion"/></td>
-                    <td><s:property value="titulo"/></td>
+                    <td><a href="<s:url action="mostrarPublicacion" > <s:param name="idPublicacion"><s:property value="idPublicacion"/></s:param></s:url>"><s:property value="titulo"/></a></td>
                     <td><s:property value="descripcion"/></td>
                     <td><s:property value="contenido"/></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="editarPublicacion" > <s:param name="idPublicacion"><s:property value="idPublicacion"/></s:param></s:url>"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="eliminarPublicacion" > <s:param name="idPublicacion"><s:property value="idPublicacion"/></s:param></s:url>"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
                 </tr>
             </s:iterator>
         </table>

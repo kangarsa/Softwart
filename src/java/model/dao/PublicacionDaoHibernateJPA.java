@@ -124,4 +124,15 @@ public class PublicacionDaoHibernateJPA extends GenericDaoHibernateJPA<Publicaci
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Publicacion getPublicacionById(Integer idPublicacion) {
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.idPublicacion= " + idPublicacion +" ");
+		if(query.getResultList().isEmpty()){
+                    return null;
+                }
+        return (Publicacion) query.getResultList().get(0);
+    }
+
 }

@@ -6,7 +6,7 @@
 
 package model.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 import model.entities.Tag;
 
 /**
@@ -15,5 +15,8 @@ import model.entities.Tag;
  */
 public interface TagDAO {
     public boolean agregar(Tag tag);
-    public ArrayList<Tag> listar();
+    public List<Tag> listar();
+    public boolean editar(Tag tag);
+    public void eliminar(Tag tag);
+    public Tag getTagById(Integer idTag);
 }

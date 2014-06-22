@@ -6,7 +6,6 @@
 
 package model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import model.entities.Publicacion;
 import model.entities.Usuario;
@@ -24,5 +23,6 @@ public interface PublicacionDAO {
     public List listarComentarios(Publicacion publicacion);
     public List listarTags(Publicacion publicacion);
     public List<Publicacion> publicacionesDeUsuario(Usuario usuario);
+    public Publicacion getPublicacionById(Integer idPublicacion);
     
 }

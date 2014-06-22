@@ -50,13 +50,13 @@
             <result name="fin">/Vista/ListarComentarios.jsp</result>
         </action>
         <action name="editarComentario" class="controller.ComentarioController" method="editar">
-            <result name="fin">/Vista/EditarUsuario.jsp</result>
+            <result name="fin">/Vista/EditarComentario.jsp</result>
         </action>
         <action name="modificarComentario" class="controller.ComentarioController" method="modificar">
-            <result name="fin">/Vista/ListarUsuarios.jsp</result>
+            <result name="fin">/Vista/ListarComentarios.jsp</result>
         </action>
         <action name="eliminarComentario" class="controller.ComentarioController" method="eliminar">
-            <result name="fin">/Vista/ListarUsuarios.jsp</result>
+            <result name="fin">/Vista/ListarComentarios.jsp</result>
         </action>
     </package>
     
@@ -97,6 +97,18 @@
           <action name="listarPublicaciones" class="controller.PublicacionController" method="listar">
             <result name="fin">/Vista/ListarPublicaciones.jsp</result>
         </action>
+        <action name="editarPublicacion" class="controller.PublicacionController" method="editar">
+            <result name="fin">/Vista/EditarPublicacion.jsp</result>
+        </action>
+        <action name="modificarPublicacion" class="controller.PublicacionController" method="modificar">
+            <result name="fin">/Vista/ListarPublicaciones.jsp</result>
+        </action>
+        <action name="eliminarPublicacion" class="controller.PublicacionController" method="eliminar">
+            <result name="fin">/Vista/ListarPublicaciones.jsp</result>
+        </action>
+        <action name="mostrarPublicacion" class="controller.PublicacionController" method="mostrar">
+            <result name="fin">/Vista/MostrarPublicacion.jsp</result>
+        </action>
     </package>
     
     <package name="pacEvento" extends="pacSecure">
@@ -133,7 +145,16 @@
         <action name="agregarSancion" class="controller.SancionController" method="agregar">
             <result name="fin">/Vista/AgregarSancion.jsp</result>
         </action>
+        <action name="editarSancion" class="controller.SancionController" method="editar">
+            <result name="fin">/Vista/EditarSancion.jsp</result>
+        </action>
         <action name="listarSanciones" class="controller.SancionController" method="listar">
+            <result name="fin">/Vista/ListarSanciones.jsp</result>
+        </action>
+        <action name="modificarSancion" class="controller.SancionController" method="modificar">
+            <result name="fin">/Vista/ListarSanciones.jsp</result>
+        </action>
+        <action name="eliminarSancion" class="controller.SancionController" method="eliminar">
             <result name="fin">/Vista/ListarSanciones.jsp</result>
         </action>
     </package>
@@ -142,16 +163,46 @@
         <action name="agregarInicioTag" class="controller.TagController" method="agregarInicio">
             <result name="exito">/Vista/AgregarTag.jsp</result>
         </action>
-        <action name="listarInicioTag" class="controller.TagController" method="listarInicio">
-            <result name="exito">/Vista/ListarTags.jsp</result>
-          </action>
         <action name="agregarTag" class="controller.TagController" method="agregar">
             <result name="fin">/Vista/AgregarTag.jsp</result>
+        </action>
+        <action name="listarInicioTag" class="controller.TagController" method="listarInicio">
+            <result name="exito">/Vista/ListarTags.jsp</result>
+        </action>
+        <action name="editarTag" class="controller.TagController" method="editar">
+            <result name="fin">/Vista/EditarTag.jsp</result>
         </action>
         <action name="listarTags" class="controller.TagController" method="listar">
             <result name="fin">/Vista/ListarTags.jsp</result>
         </action>
+        <action name="modificarTag" class="controller.TagController" method="modificar">
+            <result name="fin">/Vista/ListarTags.jsp</result>
+        </action>
+        <action name="eliminarTag" class="controller.TagController" method="eliminar">
+            <result name="fin">/Vista/ListarTags.jsp</result>
+        </action>
     </package>
-    
-
+    <package name="pacVotos" extends="pacSecure">
+        <action name="agregarInicioVoto" class="controller.VotoController" method="agregarInicio">
+            <result name="exito">/Vista/AgregarVoto.jsp</result>
+        </action>
+        <action name="listarInicioVoto" class="controller.VotoController" method="listarInicio">
+            <result name="exito">/Vista/ListarVotos.jsp</result>
+        </action>
+        <action name="agregarVoto" class="controller.VotoController" method="agregar">
+            <result name="fin">/Vista/AgregarVoto.jsp</result>
+        </action>
+        <action name="listarVotos" class="controller.VotoController" method="listar">
+            <result name="fin">/Vista/ListarVotos.jsp</result>
+        </action>
+        <action name="editarVoto" class="controller.VotoController" method="editar">
+            <result name="fin">/Vista/EditarVoto.jsp</result>
+        </action>
+        <action name="modificarVoto" class="controller.VotoController" method="modificar">
+            <result name="fin">/Vista/ListarVotos.jsp</result>
+        </action>
+        <action name="eliminarVoto" class="controller.VotoController" method="eliminar">
+            <result name="fin">/Vista/ListarVotos.jsp</result>
+        </action>
+    </package>
 </struts>
