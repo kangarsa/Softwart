@@ -21,7 +21,7 @@
     </filter-mapping>
     
     <welcome-file-list>
-        <welcome-file>Vista/Menu.jsp</welcome-file>
+        <welcome-file>Vista/error.jsp</welcome-file>
     </welcome-file-list>
     
 </web-app>

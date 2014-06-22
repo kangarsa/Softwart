@@ -16,7 +16,7 @@
     <div class="nav">
     <ul id="menu_principal">
         <li <s:if test="%{#varPag == 'menu'}">id="itemMarcado"</s:if> >
-            <a href="<s:url value="/" />">Backend</a>
+            <a href="<s:url action="index" />">Backend</a>
         </li> 
         <li <s:if test="%{#varPag == 'usuario'}">id="itemMarcado"</s:if> >
             <a href="<s:url action="listarInicioUsuario"/>">Usuarios</a>
@@ -43,7 +43,7 @@
             <a href="<s:url action="listarInicioVoto"/>">Votos</a>
         </li>
         <li>
-            <a href="<s:url action="index"/>">Ir al Frontend</a>
+            <a href="<s:url value="/" />">Ir al Frontend</a>
         </li>
         <s:if test="%{#session.usuario != null}">
         <li>

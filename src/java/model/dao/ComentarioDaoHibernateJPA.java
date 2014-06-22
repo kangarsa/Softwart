@@ -6,7 +6,6 @@
 
 package model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -31,7 +30,7 @@ public class ComentarioDaoHibernateJPA extends GenericDaoHibernateJPA<Comentario
     
     public ComentarioDaoHibernateJPA(){
         super(Comentario.class);
-        this.publicacionesComentables = null;
+        //this.publicacionesComentables = null;
         this.initEmfAndEm();
     }
     
@@ -39,7 +38,7 @@ public class ComentarioDaoHibernateJPA extends GenericDaoHibernateJPA<Comentario
     public List<Publicacion> publicacionesComentablesPara(Usuario u) {
         try{
             
-            TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.dni = '" + u.getDni() +"'");
+            TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.USUARIOCOMENTADOR_IDUSUARIO = " + u.getIdUsuario() +" ");
             this.publicacionesComentables = query.getResultList();
 
         }
@@ -101,6 +100,18 @@ public class ComentarioDaoHibernateJPA extends GenericDaoHibernateJPA<Comentario
         comentario = em.merge(comentario);
         em.remove(comentario);
         em.getTransaction().commit();
+    }
+
+    @Override
+    public List<Comentario> listarDePublicacion(Integer idPublicacion) {
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Comentario> query = (TypedQuery<Comentario>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.publicacion.idPublicacion = " + idPublicacion + " " );
+
+        if(query.getResultList().isEmpty()){
+            return null;
+        }
+        return query.getResultList();
     }
     
 }

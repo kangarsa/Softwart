@@ -2,7 +2,16 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 
-    <package name="pacSecure" namespace="/" extends="struts-default">
+    <package name="frontend" namespace="/" extends="struts-default">
+        <action name="index" class="controller.WelcomeController" method="execute">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success">/Vista/frontend.jsp</result>
+        </action>
+        <action name="agregarComentario" class="controller.ComentarioController" method="agregar">
+            <result name="fin" type="redirect">index</result>
+        </action>
+    </package>
+    <package name="pacSecure" namespace="/backend" extends="struts-default">
         <interceptors>
             <interceptor name="authentication" class="interceptor.AuthenticationInterceptor"></interceptor>
             <interceptor-stack name="authStack">
@@ -15,6 +24,10 @@
         <global-results>
             <result name="login">/Vista/login.jsp</result>
         </global-results>
+        
+        <action name="index">
+            <result name="success">/Vista/backend.jsp</result>
+        </action>
         
         <action name="login" class="controller.LogController" method="login">
             <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -49,6 +62,9 @@
         <action name="listarComentarios" class="controller.ComentarioController" method="listar">
             <result name="fin">/Vista/ListarComentarios.jsp</result>
         </action>
+        <action name="listarComentariosDePublicacion" class="controller.ComentarioController" method="listarDePublicacion">
+            <result name="fin">/Vista/MostrarPublicacion.jsp</result>
+        </action>
         <action name="editarComentario" class="controller.ComentarioController" method="editar">
             <result name="fin">/Vista/EditarComentario.jsp</result>
         </action>
@@ -60,7 +76,7 @@
         </action>
     </package>
     
-    <package name="pacUsuario" extends="struts-default">
+    <package name="pacUsuario" extends="pacSecure">
         <action name="agregarInicioUsuario" class="controller.UsuarioController" method="agregarInicio">
             <result name="exito">/Vista/AgregarUsuario.jsp</result>
         </action>

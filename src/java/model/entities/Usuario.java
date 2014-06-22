@@ -35,7 +35,7 @@ public class Usuario implements java.io.Serializable {
     private List<Publicacion> publicacionesModeradas;
     @OneToMany(mappedBy = "usuario")
     private List<Voto> votos;
-    @OneToMany(mappedBy = "usuarioPublicador", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "usuarioPublicador", cascade = {CascadeType.REMOVE})
     private List<Publicacion> publicaciones;
     @OneToMany(mappedBy = "usuario", orphanRemoval=true)
     @OnDelete(action = OnDeleteAction.CASCADE)

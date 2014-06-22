@@ -26,6 +26,21 @@
             <s:textarea readonly="true" label="Contenido" name="publicacion.contenido" cols="60" rows="5"/>
         </s:form>
         <hr>
+        <s:form action="listarComentariosDePublicacion" method="post">
+            <s:textfield readonly="true" name="idPublicacion" label="ID PUBLICACION"></s:textfield>
+            <s:param name="idPublicacion"><s:property value="idPublicacion"/></s:param>
+            <s:submit value="Ver Comentarios"/>
+        </s:form>
+        <table border="1" width="50%">
+        <s:iterator value="%{listaComentarios}">
+                <tr>
+                    <td>TITULO: <s:property value="titulo"/></td>
+                </tr>
+                <tr>
+                    <td>CONTENIDO: <s:property value="contenido"/></td>
+                </tr>
+            </s:iterator>
+        </table>
         <s:label value="%{msg}"/>
         <s:include value="footer.jsp" />
     </body>

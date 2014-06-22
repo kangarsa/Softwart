@@ -26,7 +26,43 @@ public class ComentarioController implements ModelDriven<Comentario>{
     ComentarioDAO comentarioDAO;
     Usuario u = (Usuario) ActionContext.getContext().getSession().get("usuario");
     String msg="";
+    List<Publicacion>  publicacionesComentables;
+    Publicacion publicacion = new Publicacion();
+
+    public ComentarioDAO getComentarioDAO() {
+        return comentarioDAO;
+    }
+
+    public void setComentarioDAO(ComentarioDAO comentarioDAO) {
+        this.comentarioDAO = comentarioDAO;
+    }
+
+    public Usuario getU() {
+        return u;
+    }
+
+    public void setU(Usuario u) {
+        this.u = u;
+    }
+
+    public Publicacion getPublicacion() {
+        return publicacion;
+    }
+
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
+    }
+
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
+    }
+    Integer idPublicacion;
     
+    @Override
     public Comentario getModel() {
         return comentario;
     }
@@ -36,6 +72,7 @@ public class ComentarioController implements ModelDriven<Comentario>{
     }
     
     public String agregarInicio(){
+        this.publicacionesComentables = comentarioDAO.publicacionesComentablesPara(u);
         return "exito";
     }
     
@@ -53,6 +90,11 @@ public class ComentarioController implements ModelDriven<Comentario>{
     
     public String listar(){
         listaComentarios=comentarioDAO.listar();
+        return "fin";
+    }
+
+    public String listarDePublicacion(){
+        listaComentarios=comentarioDAO.listarDePublicacion(idPublicacion);
         return "fin";
     }
 

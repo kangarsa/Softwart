@@ -21,4 +21,6 @@ public interface ComentarioDAO {
     public List<Comentario> listar();
     public boolean editar(Comentario comentario);
     public void eliminar(Comentario comentario);
+
+    public List<Comentario> listarDePublicacion(Integer idPublicacion);
 }
