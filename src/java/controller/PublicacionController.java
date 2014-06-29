@@ -83,6 +83,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     
     public String listarComentarios(Publicacion publicacion){
         listaDeComentarios = (List<Comentario>) publicacionDAO.listarComentarios(publicacion);
+        System.out.println("LISTAR COMENTARIOS CONTROLLER: " + listaDeComentarios);
         return "fin";
     }
     

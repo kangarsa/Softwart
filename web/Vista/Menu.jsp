@@ -15,21 +15,13 @@
     </head>
     <body>
         <s:include value="nav.jsp" />
-        <h1>Menu Comentario</h1>
-        <hr>
-        <a href="agregarInicioComentario">Agregar Comentario</a><br>
-        <a href="listarInicioComentario">Listar Comentarios</a><br>
-        <hr>
-        <hr>
+        <h1>MENU</h1>
         <h1>Menu Usuario</h1>
-        <hr>
         <a href="agregarInicioUsuario">Agregar Usuario</a><br>
         <a href="listarInicioUsuario">Listar Usuarios</a><br>
         <h1>Menu Publicacion</h1>
-        <hr>
         <a href="agregarInicioPublicacion">Agregar Publicacion</a><br>
         <a href="listarInicioPublicacion">Listar Publicaciones</a><br>
-        <hr>
         <h1>Menu Evento</h1>
         <a href="agregarInicioEvento">Agregar Evento</a><br>
         <a href="listarInicioEvento">Listar Eventos</a><br>

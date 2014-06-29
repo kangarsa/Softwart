@@ -23,4 +23,6 @@ public interface ComentarioDAO {
     public void eliminar(Comentario comentario);
 
     public List<Comentario> listarDePublicacion(Integer idPublicacion);
+
+    public Comentario getComentarioById(Integer idComentario);
 }

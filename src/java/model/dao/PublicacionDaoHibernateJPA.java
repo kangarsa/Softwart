@@ -7,6 +7,7 @@
 package model.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -50,6 +51,12 @@ public class PublicacionDaoHibernateJPA extends GenericDaoHibernateJPA<Publicaci
         if(query.getResultList().isEmpty()){
             return null;
         }
+       
+        Iterator iterador = query.getResultList().iterator();
+        while(iterador.hasNext()){
+            em.refresh(iterador.next());
+        }
+ 
         return query.getResultList();
 
     }
@@ -93,10 +100,11 @@ public class PublicacionDaoHibernateJPA extends GenericDaoHibernateJPA<Publicaci
 
     @Override
      public List listarComentarios(Publicacion publicacion) {
-        EntityManager em = this.getEntityManager();
+        EntityManager em = this.getEntityManager(); 
         
-        TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e " );
-
+        TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) em.createQuery("select c from " + getPersistentClass().getSimpleName() + " e, Comentario c WHERE e.idPublicacion = c.publicacion.idPublicacion " );
+        System.out.println("LISTA COMENTARIOS DAO: " + query.getResultList());
+        
         if(query.getResultList().isEmpty()){
             return null;
         }

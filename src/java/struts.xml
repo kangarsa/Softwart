@@ -5,11 +5,12 @@
     <package name="frontend" namespace="/" extends="struts-default">
         <action name="index" class="controller.WelcomeController" method="execute">
             <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="success">/Vista/frontend.jsp</result>
+            <result name="fin">/Vista/frontend.jsp</result>
         </action>
-        <action name="agregarComentario" class="controller.ComentarioController" method="agregar">
+        <action name="agregarComentarioFE" class="controller.ComentarioController" method="agregar">
             <result name="fin" type="redirect">index</result>
         </action>
+
     </package>
     <package name="pacSecure" namespace="/backend" extends="struts-default">
         <interceptors>
@@ -27,6 +28,10 @@
         
         <action name="index">
             <result name="success">/Vista/backend.jsp</result>
+        </action>
+        
+        <action name="irAlMenuBackend">
+            <result name="success">/Vista/Menu.jsp</result>
         </action>
         
         <action name="login" class="controller.LogController" method="login">
@@ -57,7 +62,7 @@
             <result name="exito">/Vista/ListarComentarios.jsp</result>
         </action>
         <action name="agregarComentario" class="controller.ComentarioController" method="agregar">
-            <result name="fin">/Vista/AgregarComentario.jsp</result>
+            <result name="fin">/Vista/MostrarPublicacion.jsp</result>
         </action>
         <action name="listarComentarios" class="controller.ComentarioController" method="listar">
             <result name="fin">/Vista/ListarComentarios.jsp</result>

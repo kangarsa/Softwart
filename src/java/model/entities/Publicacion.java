@@ -1,6 +1,7 @@
 package model.entities;
 // Generated 23/01/2014 14:28:10 by Hibernate Tools 3.6.0
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -42,7 +43,7 @@ public class Publicacion implements java.io.Serializable {
     private List<Tag> tags;
     @OneToMany(mappedBy = "publicacion")
     private List<Voto> votos;
-    @OneToMany(mappedBy = "publicacion")
+    @OneToMany(mappedBy = "publicacion", fetch=FetchType.EAGER)
     private List<Comentario> comentarios;
     @ManyToOne
     private Usuario usuarioModerador;
@@ -52,6 +53,7 @@ public class Publicacion implements java.io.Serializable {
 
     public Publicacion() {
         this.fechaSubida = new Date();
+        this.comentarios = new ArrayList<Comentario>();
     }
 
     public Integer getIdPublicacion() {

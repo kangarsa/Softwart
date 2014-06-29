@@ -20,26 +20,38 @@
         <hr>
 
         <s:form action="modificarPublicacion" method="post">
-            <s:textfield readonly="true" label="ID" name="publicacion.idPublicacion" size="20" maxlength="30"/>
+            <s:textfield readonly="true" label="ID" name="idPublicacion" size="20" maxlength="30"/>
             <s:textfield readonly="true" label="Titulo" name="publicacion.titulo" size="20" maxlength="30"/>
             <s:textarea readonly="true" label="Descripcion" name="publicacion.descripcion" cols="60" rows="5"/>
             <s:textarea readonly="true" label="Contenido" name="publicacion.contenido" cols="60" rows="5"/>
         </s:form>
         <hr>
+        <h1>Comentar</h1>
+        <s:form action="agregarComentario" method="post">
+            <s:property value="idPublicacion"/>
+            <s:textfield  readonly="true" name="idPublicacion" ></s:textfield>
+            <s:textfield label="Titulo" name="titulo" size="20" maxlength="30"/>
+            <s:textfield label="Contenido" name="contenido" size="40" maxlength="255"/>  
+            <s:submit value="Comentar"/>
+        </s:form>
         <s:form action="listarComentariosDePublicacion" method="post">
-            <s:textfield readonly="true" name="idPublicacion" label="ID PUBLICACION"></s:textfield>
+            <s:textfield style="visibility: hidden;" readonly="true" name="idPublicacion" ></s:textfield>
+            <s:textfield style="visibility: hidden;" readonly="true" name="publicacion.titulo" ></s:textfield>
+            <s:textfield style="visibility: hidden;" readonly="true" name="publicacion.descripcion" ></s:textfield>
+            <s:textfield style="visibility: hidden;" readonly="true" name="publicacion.contenido" ></s:textfield>
             <s:param name="idPublicacion"><s:property value="idPublicacion"/></s:param>
             <s:submit value="Ver Comentarios"/>
         </s:form>
+        <hr>
         <table border="1" width="50%">
         <s:iterator value="%{listaComentarios}">
-                <tr>
-                    <td>TITULO: <s:property value="titulo"/></td>
-                </tr>
-                <tr>
-                    <td>CONTENIDO: <s:property value="contenido"/></td>
-                </tr>
-            </s:iterator>
+            <tr>
+                <td>TITULO <br><s:property value="titulo"/><br></td>
+            </tr>
+            <tr>
+                <td>CONTENIDO: <br><s:property value="contenido"/><br></td>
+            </tr>
+        </s:iterator>
         </table>
         <s:label value="%{msg}"/>
         <s:include value="footer.jsp" />

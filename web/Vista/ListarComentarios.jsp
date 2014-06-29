@@ -32,8 +32,8 @@
                     <td><s:property value="idComentario"/></td>
                     <td><s:property value="titulo"/></td>
                     <td><s:property value="contenido"/></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
-                    <td><a href="<s:url value="http://www.google.com"  />"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="editarComentario" > <s:param name="idComentario"><s:property value="idComentario"/></s:param></s:url>"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="eliminarComentario" > <s:param name="idComentario"><s:property value="idComentario"/></s:param></s:url>"><img src="images/tema_1/delete.gif" alt="editar"></a></td>
                 </tr>
             </s:iterator>
         </table>

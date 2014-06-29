@@ -5,15 +5,15 @@
 --%>
 
 <%@taglib uri="/struts-tags" prefix="s"%>
-<s:iterator value="%{listaPublicaciones}">
+<s:iterator value="listaPublicaciones">
+    <s:property value="listaPublicaciones"></s:property>
 <article class="is-page-content">
-
     <header>
         <h2><s:property value="titulo"/></h2>
         <span class="byline"><s:property value="descripcion"/></span>
         <ul class="meta">
             <li class="fa fa-clock-o"><s:date name="fechaSubida" format="dd/MM/yyyy" /></li>
-            <li class="fa fa-comments"><a href="#">1,024</a></li>
+            <li class="fa fa-comments"><a href="#"></a><s:property value="comentarios.size()"/></li>
         </ul>
     </header>
 
@@ -23,24 +23,28 @@
     </section>
 
     <section>
-        <s:iterator value="%{listaComentarios}">
-        <h3><s:property value="titulo"/></h3>
-        <ul class="meta">
-            <li class="fa fa-clock-o"><s:date name="fechaSubida" format="dd/MM/yyyy" /></li>
-        </ul>
-        <p><s:property value="contenido"/></p>
-        <span>De: <s:property value="usuarioComentador.nombre"/></span>
+        <s:iterator value="comentarios">
+            <h3><s:property value="titulo"/></h3>
+            <ul class="meta">
+                <li class="fa fa-clock-o"><s:date name="fechaSubida" format="dd/MM/yyyy" /></li>
+            </ul>
+            <p><s:property value="contenido"/></p>
+            <span>De: <s:property value="usuarioComentador.nombre"/></span>
         </s:iterator>
     </section>
     <section>
         <s:if test="%{#session.usuario != null}">
-            <s:form action="agregarComentario" method="post">
+            <s:form action="agregarComentarioFE" method="post">
                 <s:textfield label="Titulo" name="comentario.titulo" size="20" maxlength="30"/>
                 <s:textfield label="Contenido" name="comentario.contenido" size="40" maxlength="255"/>
-                <s:hidden value="publicacionId" name="publicacionId" /> 
+                <s:hidden value="%{idPublicacion}" name="idPublicacion" /> 
                 <s:submit value="Comentar"/>
             </s:form>
         </s:if>
+        <s:else>
+            <p>Para comentar ingresa <a href="<s:url action="login" ></s:url>">AQUí</a></p>
+        </s:else>
+
     </section>
 
 </article>

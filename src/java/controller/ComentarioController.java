@@ -7,11 +7,14 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
 import java.util.List;
 import model.dao.ComentarioDAO;
 import model.dao.ComentarioDaoHibernateJPA;
+import model.dao.PublicacionDAO;
+import model.dao.PublicacionDaoHibernateJPA;
 import model.entities.Comentario;
 import model.entities.Publicacion;
 import model.entities.Usuario;
@@ -20,15 +23,24 @@ import model.entities.Usuario;
  *
  * @author agustin
  */
-public class ComentarioController implements ModelDriven<Comentario>{
+public class ComentarioController extends ActionSupport implements ModelDriven<Comentario> {
     Comentario comentario = new Comentario();
     List<Comentario> listaComentarios= new ArrayList();
     ComentarioDAO comentarioDAO;
+    PublicacionDAO publicacionDAO;
     Usuario u = (Usuario) ActionContext.getContext().getSession().get("usuario");
     String msg="";
     List<Publicacion>  publicacionesComentables;
-    Publicacion publicacion = new Publicacion();
+    private Publicacion publicacion = new Publicacion();
+    private Integer idPublicacion;
+    private String titulo;
 
+    public ComentarioController(){
+        comentarioDAO=new ComentarioDaoHibernateJPA();
+        publicacionDAO=new PublicacionDaoHibernateJPA();
+        listaComentarios= new ArrayList<Comentario>();
+    }
+    
     public ComentarioDAO getComentarioDAO() {
         return comentarioDAO;
     }
@@ -36,7 +48,23 @@ public class ComentarioController implements ModelDriven<Comentario>{
     public void setComentarioDAO(ComentarioDAO comentarioDAO) {
         this.comentarioDAO = comentarioDAO;
     }
+    
+    public PublicacionDAO getPublicacionDAO() {
+        return publicacionDAO;
+    }
 
+    public void setPublicacionDAO(PublicacionDAO publicacionDAO) {
+        this.publicacionDAO = publicacionDAO;
+    }
+    
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    
     public Usuario getU() {
         return u;
     }
@@ -46,11 +74,12 @@ public class ComentarioController implements ModelDriven<Comentario>{
     }
 
     public Publicacion getPublicacion() {
+        System.out.println("GETPUBLICACION: " + publicacion);
         return publicacion;
     }
 
-    public void setPublicacion(Publicacion publicacion) {
-        this.publicacion = publicacion;
+    public void setPublicacion(Publicacion publication) {
+        this.publicacion = publication;
     }
 
     public Integer getIdPublicacion() {
@@ -60,17 +89,13 @@ public class ComentarioController implements ModelDriven<Comentario>{
     public void setIdPublicacion(Integer idPublicacion) {
         this.idPublicacion = idPublicacion;
     }
-    Integer idPublicacion;
+
     
     @Override
     public Comentario getModel() {
         return comentario;
     }
-    
-    public ComentarioController(){
-        comentarioDAO=new ComentarioDaoHibernateJPA();
-    }
-    
+          
     public String agregarInicio(){
         this.publicacionesComentables = comentarioDAO.publicacionesComentablesPara(u);
         return "exito";
@@ -81,6 +106,11 @@ public class ComentarioController implements ModelDriven<Comentario>{
     }
     
     public String agregar(){
+        System.out.println("ID PUBLICACION COMENTADA: " + idPublicacion);
+        publicacion = publicacionDAO.getPublicacionById(idPublicacion);
+        publicacion.getComentarios().add(comentario);
+        comentario.setPublicacion(publicacion);
+        comentario.setUsuarioComentador(u);
         if(comentarioDAO.agregar(comentario))
             msg="Se agrego un comentario nuevo";
         else
@@ -94,7 +124,13 @@ public class ComentarioController implements ModelDriven<Comentario>{
     }
 
     public String listarDePublicacion(){
-        listaComentarios=comentarioDAO.listarDePublicacion(idPublicacion);
+        System.out.println("ID PUBLICACION: " + idPublicacion);
+       // listaComentarios=comentarioDAO.listarDePublicacion(idPublicacion);
+
+        publicacion = publicacionDAO.getPublicacionById(idPublicacion);
+        listaComentarios= publicacion.getComentarios();
+        System.out.println("LISTA COMENTARIOS FE: " +  listaComentarios );
+        System.out.println("PUBLICACION: " + publicacion.getTitulo());
         return "fin";
     }
 
@@ -120,4 +156,24 @@ public class ComentarioController implements ModelDriven<Comentario>{
         return listaPublicaciones;
     }
     
+        public String editar(){
+        comentario = comentarioDAO.getComentarioById(comentario.getIdComentario());
+        return "fin";
+    }
+    
+    public String modificar(){
+        comentarioDAO.editar(comentario);
+        return "fin";
+    }
+    
+    public String eliminar(){
+        comentarioDAO.eliminar(comentario);
+        return "fin";
+    }
+    
+    public String mostrar(){
+        comentario = comentarioDAO.getComentarioById(comentario.getIdComentario());
+        return "fin";
+    }
+
 }

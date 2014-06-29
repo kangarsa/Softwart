@@ -38,9 +38,9 @@ public class ComentarioDaoHibernateJPA extends GenericDaoHibernateJPA<Comentario
     public List<Publicacion> publicacionesComentablesPara(Usuario u) {
         try{
             
-            TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.USUARIOCOMENTADOR_IDUSUARIO = " + u.getIdUsuario() +" ");
+            TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e ");
             this.publicacionesComentables = query.getResultList();
-
+            System.out.println("PUBLICACIONES COMENTABLES: " + this.publicacionesComentables);
         }
         catch(HibernateException e){
             System.out.println(e.getMessage());
@@ -54,6 +54,7 @@ public class ComentarioDaoHibernateJPA extends GenericDaoHibernateJPA<Comentario
         EntityManager em = this.getEntityManager();
         EntityTransaction etx = em.getTransaction();
         etx.begin();
+        //em.persist(comentario.getPublicacion());
         em.persist(comentario);
         em.flush();
         etx.commit();
@@ -113,5 +114,17 @@ public class ComentarioDaoHibernateJPA extends GenericDaoHibernateJPA<Comentario
         }
         return query.getResultList();
     }
+
+    @Override
+    public Comentario getComentarioById(Integer idComentario) {
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Comentario> query = (TypedQuery<Comentario>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.idComentario= " + idComentario +" ");
+		if(query.getResultList().isEmpty()){
+                    return null;
+                }
+        return (Comentario) query.getResultList().get(0);
+    }
+
     
 }

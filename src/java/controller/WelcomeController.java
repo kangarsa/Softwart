@@ -6,10 +6,9 @@
 
 package controller;
 
-import static com.opensymphony.xwork2.Action.SUCCESS;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import model.dao.PublicacionDAO;
 import model.dao.PublicacionDaoHibernateJPA;
@@ -20,12 +19,23 @@ import model.entities.Publicacion;
  *
  * @author banquete
  */
-public class WelcomeController extends ActionSupport implements ModelDriven<Publicacion> {    
-    Publicacion publicacion = new Publicacion();
+public class WelcomeController implements ModelDriven<Publicacion> {    
+    private Publicacion publicacion = new Publicacion();
     List<Publicacion> listaPublicacion= new ArrayList();
-    List<Comentario> listaDeComentarios= new ArrayList();
     PublicacionDAO publicacionDAO;
+    Integer cantidadComentarios = 0;
     String content="";
+    List<Comentario> listaComentario = new ArrayList();
+    private Integer idPublicacion;
+
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
+    }
+
 
     public String getContent() {
         return content;
@@ -40,13 +50,13 @@ public class WelcomeController extends ActionSupport implements ModelDriven<Publ
     public WelcomeController(){
         publicacionDAO=new PublicacionDaoHibernateJPA();
     }
-    
-    @Override
+
     public String execute(){
         listaPublicacion=publicacionDAO.listar();
-        System.out.println("E TARAO "+listaPublicacion);
+        listaComentario=publicacionDAO.listarComentarios(publicacion);
+        System.out.println("EXECUTE LISTA COMENTARIO: " + listaComentario);
         content="ListarPublicaciones_fe.jsp";
-        return SUCCESS;
+        return "fin";
     }
 
     @Override
@@ -55,13 +65,44 @@ public class WelcomeController extends ActionSupport implements ModelDriven<Publ
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public List<Comentario> getListaComentario() {
+        return listaComentario;
+    }
+
+    public void setListaComentario(List<Comentario> listaComentario) {
+        this.listaComentario = listaComentario;
+    }
 
     public void setPublicacion(Publicacion publicacion) {
         this.publicacion = publicacion;
     }
     
     public List<Publicacion> getListaPublicaciones() {
+        listaPublicacion=publicacionDAO.listar();
+        System.out.println("GETLISTAPUBLICACIONES: " + listaPublicacion);       
+        Iterator <Publicacion> iterador = listaPublicacion.iterator();
+        while(iterador.hasNext()){
+            Publicacion p =  iterador.next();
+            System.out.println("ESLAPUBLICACION: " + p.getTitulo());
+            Iterator <Comentario> iterador2 = p.getComentarios().iterator();
+            while(iterador2.hasNext()){
+                System.out.println("COMENTARIOSPUBLICACION: " + iterador2.next().getTitulo());
+            }
+        }
+        System.out.println("COMENTARIOSPUBLICACIONES: " + listaPublicacion);
         return listaPublicacion;
     }
+    
+    public List<Comentario> getListaComentarios(){
+        return listaComentario;
+    }
+    
+    /*public Integer getCantidadComentarios(){        
+        this.cantidadComentarios = publicacionDAO.listarComentarios(publicacion).size();
+        System.out.println("PUBLICACION: " + (publicacion.getIdPublicacion()));
+        System.out.println("CANTIDAD COMENTARIOS:" + cantidadComentarios);
+        
+        return cantidadComentarios;
+    }*/
  
 }

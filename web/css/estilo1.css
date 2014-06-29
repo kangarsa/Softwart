@@ -146,6 +146,14 @@ body {
   background-position:center center ;
 }
 
+#container h1 {
+  margin-left: 1em;  
+}
+
+#container a {
+  margin-left: 1em;  
+}
+
 
 /** CONTENIDO **/
 
@@ -283,3 +291,12 @@ img.imagen{
 .audio{
   /*float:right;*/
 }
+
+/** MOSTRAR COMENTARIOS PUBLICACION  **/
+
+.container table tr {
+
+    
+    
+}
+

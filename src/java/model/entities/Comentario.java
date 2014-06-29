@@ -3,7 +3,6 @@ package model.entities;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -22,7 +21,7 @@ public class Comentario implements java.io.Serializable {
 
     @ManyToOne
     private Usuario usuarioModerador;
-    @OneToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     private Publicacion publicacion;
     private String titulo;
     private String contenido;
@@ -36,6 +35,7 @@ public class Comentario implements java.io.Serializable {
     private Set sanciones = new HashSet(0);
 
     public Comentario() {
+        this.fechaSubida = new Date();
     }
 
     public Integer getIdComentario() {
