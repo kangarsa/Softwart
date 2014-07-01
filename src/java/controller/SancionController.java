@@ -52,8 +52,6 @@ public class SancionController implements ModelDriven<Sancion>{
     
     public String listar(){
         listaSanciones=sancionDAO.listar();
-        //NO SE MUESTRA Y NO SE PORQUE
-        System.out.println("SANCIONES: " + listaSanciones);
         return "fin";
     }
 
@@ -75,7 +73,6 @@ public class SancionController implements ModelDriven<Sancion>{
     
     public ArrayList<Publicacion> getPublicacionesSancionables() {
         ArrayList<Publicacion> listaPublicaciones = sancionDAO.publicacionesSancionablesPara(u);
-        System.out.println(listaPublicaciones);
         return listaPublicaciones;
     }
     

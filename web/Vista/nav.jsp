@@ -43,7 +43,7 @@
             <a href="<s:url action="listarInicioVoto"/>">Votos</a>
         </li>
         <li>
-            <a href="<s:url action="index" />">Ir al Frontend</a>
+            <a href="<s:url value="/index" />">Ir al Frontend</a>
         </li>
         <s:if test="%{#session.usuario != null}">
         <li>

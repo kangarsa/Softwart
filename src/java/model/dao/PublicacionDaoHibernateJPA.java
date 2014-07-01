@@ -103,7 +103,6 @@ public class PublicacionDaoHibernateJPA extends GenericDaoHibernateJPA<Publicaci
         EntityManager em = this.getEntityManager(); 
         
         TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) em.createQuery("select c from " + getPersistentClass().getSimpleName() + " e, Comentario c WHERE e.idPublicacion = c.publicacion.idPublicacion " );
-        System.out.println("LISTA COMENTARIOS DAO: " + query.getResultList());
         
         if(query.getResultList().isEmpty()){
             return null;
@@ -142,5 +141,6 @@ public class PublicacionDaoHibernateJPA extends GenericDaoHibernateJPA<Publicaci
                 }
         return (Publicacion) query.getResultList().get(0);
     }
+
 
 }

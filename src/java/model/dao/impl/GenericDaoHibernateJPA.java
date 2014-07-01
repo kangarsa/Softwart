@@ -72,17 +72,20 @@ import javax.persistence.Query;
 	}
 
 	
+        @Override
 	public T update(T entity) {
 		this.getEntityManager().merge(entity);
 		return entity;
 	}
 
 	
+        @Override
 	public void remove(T entity) {
 		this.getEntityManager().remove(entity);
 	}
 
 	
+        @Override
 	public T remove(Serializable id) {
 		T entity = find(id);
 		if (entity != null){
@@ -93,6 +96,7 @@ import javax.persistence.Query;
 	}
 
 	
+        @Override
 	public Boolean exists(Serializable id) {
 		T entity = find(id);
 		if (entity != null){
@@ -102,12 +106,12 @@ import javax.persistence.Query;
 	}
 
 	
+        @Override
 	public T find(Serializable id) {
 		return this.getEntityManager().find(this.getPersistentClass(), id);
 	}
 	
 	@SuppressWarnings("unchecked")
-	
 	public List<T> findAll() {
 
                 EntityManager entityManager = entityManagerFactory.createEntityManager();

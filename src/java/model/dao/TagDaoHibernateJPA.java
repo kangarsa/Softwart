@@ -36,7 +36,7 @@ public class TagDaoHibernateJPA extends GenericDaoHibernateJPA<Tag> implements T
         em.persist(tag);
         em.flush();
         etx.commit();
-        em.close();
+        //em.close();
         return true;
     }
 
@@ -91,6 +91,20 @@ public class TagDaoHibernateJPA extends GenericDaoHibernateJPA<Tag> implements T
 		if(query.getResultList().isEmpty()){
                     return null;
                 }
+        return (Tag) query.getResultList().get(0);
+    }
+
+    @Override
+    public Tag buscarPorTexto(String textoTag){
+        EntityManager em = this.getEntityManager();
+        
+        TypedQuery<Tag> query = (TypedQuery<Tag>) em.createQuery("select e from " + getPersistentClass().getSimpleName() + " e where e.texto ='" + textoTag +"' ");
+		if(query.getResultList().isEmpty()){
+                    return null;
+                }
+        
+        System.out.println("OBTIENE TAG MODELO: " + query.getResultList());
+        
         return (Tag) query.getResultList().get(0);
     }
 

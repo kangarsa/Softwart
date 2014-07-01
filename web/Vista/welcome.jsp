@@ -4,15 +4,4 @@
     Author     : banquete
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="/struts-tags" prefix="s"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h3>Welcome <s:property value="userName"></s:property></h3>
-    </body>
-</html>
+ <META HTTP-EQUIV="Refresh" CONTENT="1;URL=index">

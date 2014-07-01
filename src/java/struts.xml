@@ -8,7 +8,19 @@
             <result name="fin">/Vista/frontend.jsp</result>
         </action>
         <action name="agregarComentarioFE" class="controller.ComentarioController" method="agregar">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="fin" type="redirect">index</result>
+        </action>
+        <action name="publicarFE" class="controller.PublicacionController" method="agregar">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="fin" type="redirect">index</result>
+        </action>
+        <action name="publicar" class="controller.WelcomeController" method="publicar">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="fin">/Vista/frontend.jsp</result>
+        </action>
+        <action name="buscarPorTagsFE" class="controller.WelcomeController" method="listarPorTag">
+            <result name="fin">/Vista/frontend.jsp</result>
         </action>
 
     </package>
@@ -23,15 +35,15 @@
         <default-interceptor-ref name="authStack"></default-interceptor-ref>
         
         <global-results>
-            <result name="login">/Vista/login.jsp</result>
+            <result name="login" type="redirect">/index</result>
         </global-results>
         
         <action name="index">
-            <result name="success">/Vista/backend.jsp</result>
+            <result name="success">/Vista/Menu.jsp</result>
         </action>
         
         <action name="irAlMenuBackend">
-            <result name="success">/Vista/Menu.jsp</result>
+            <result  type="redirect">/backend/index</result>
         </action>
         
         <action name="login" class="controller.LogController" method="login">
@@ -41,7 +53,7 @@
         </action>
         <action name="logout" class="controller.LogController" method="logout">
             <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="success">/Vista/login.jsp</result>
+            <result type="redirect">/index</result>
         </action>
         <!--
         <action name="showLogin">

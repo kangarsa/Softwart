@@ -21,7 +21,7 @@
     </filter-mapping>
     
     <welcome-file-list>
-        <welcome-file>Vista/backend.jsp</welcome-file>
+        <welcome-file>/Vista/welcome.jsp</welcome-file>
     </welcome-file-list>
     
 </web-app>

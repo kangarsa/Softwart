@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,8 +13,11 @@ import java.util.Iterator;
 import java.util.List;
 import model.dao.PublicacionDAO;
 import model.dao.PublicacionDaoHibernateJPA;
+import model.dao.TagDAO;
+import model.dao.TagDaoHibernateJPA;
 import model.entities.Comentario;
 import model.entities.Publicacion;
+import model.entities.Tag;
 
 /**
  *
@@ -22,6 +26,8 @@ import model.entities.Publicacion;
 public class WelcomeController implements ModelDriven<Publicacion> {    
     private Publicacion publicacion = new Publicacion();
     List<Publicacion> listaPublicacion= new ArrayList();
+    TagDAO tagDAO;
+    String tag;
     PublicacionDAO publicacionDAO;
     Integer cantidadComentarios = 0;
     String content="";
@@ -49,13 +55,18 @@ public class WelcomeController implements ModelDriven<Publicacion> {
     
     public WelcomeController(){
         publicacionDAO=new PublicacionDaoHibernateJPA();
+        tagDAO=new TagDaoHibernateJPA();
     }
 
     public String execute(){
         listaPublicacion=publicacionDAO.listar();
         listaComentario=publicacionDAO.listarComentarios(publicacion);
-        System.out.println("EXECUTE LISTA COMENTARIO: " + listaComentario);
         content="ListarPublicaciones_fe.jsp";
+        return "fin";
+    }
+    
+    public String publicar(){
+        content="AgregarPublicacion_fe.jsp";
         return "fin";
     }
 
@@ -65,6 +76,14 @@ public class WelcomeController implements ModelDriven<Publicacion> {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+    
     public List<Comentario> getListaComentario() {
         return listaComentario;
     }
@@ -79,17 +98,10 @@ public class WelcomeController implements ModelDriven<Publicacion> {
     
     public List<Publicacion> getListaPublicaciones() {
         listaPublicacion=publicacionDAO.listar();
-        System.out.println("GETLISTAPUBLICACIONES: " + listaPublicacion);       
-        Iterator <Publicacion> iterador = listaPublicacion.iterator();
-        while(iterador.hasNext()){
-            Publicacion p =  iterador.next();
-            System.out.println("ESLAPUBLICACION: " + p.getTitulo());
-            Iterator <Comentario> iterador2 = p.getComentarios().iterator();
-            while(iterador2.hasNext()){
-                System.out.println("COMENTARIOSPUBLICACION: " + iterador2.next().getTitulo());
-            }
-        }
-        System.out.println("COMENTARIOSPUBLICACIONES: " + listaPublicacion);
+        return listaPublicacion;
+    }
+    
+    public List<Publicacion> getListaPublicacionesTags() {
         return listaPublicacion;
     }
     
@@ -97,12 +109,20 @@ public class WelcomeController implements ModelDriven<Publicacion> {
         return listaComentario;
     }
     
-    /*public Integer getCantidadComentarios(){        
-        this.cantidadComentarios = publicacionDAO.listarComentarios(publicacion).size();
-        System.out.println("PUBLICACION: " + (publicacion.getIdPublicacion()));
-        System.out.println("CANTIDAD COMENTARIOS:" + cantidadComentarios);
-        
-        return cantidadComentarios;
-    }*/
+    public String listarPorTag(){
+        Tag t = tagDAO.buscarPorTexto(tag);
+        List<Publicacion> laux= new ArrayList();
+        listaPublicacion=publicacionDAO.listar();
+        Iterator <Publicacion> iterador = listaPublicacion.iterator();
+        while(iterador.hasNext()){
+            Publicacion p = iterador.next();
+            if(p.getTags().contains(t)){
+                laux.add(p);
+            }
+        }
+        listaPublicacion=laux;
+        content="ListarPublicacionesTags_fe.jsp";
+        return "fin";
+    }   
  
 }

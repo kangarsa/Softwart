@@ -40,7 +40,6 @@ public class ComentarioDaoHibernateJPA extends GenericDaoHibernateJPA<Comentario
             
             TypedQuery<Publicacion> query = (TypedQuery<Publicacion>) (Query) this.getEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e ");
             this.publicacionesComentables = query.getResultList();
-            System.out.println("PUBLICACIONES COMENTABLES: " + this.publicacionesComentables);
         }
         catch(HibernateException e){
             System.out.println(e.getMessage());

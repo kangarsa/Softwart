@@ -61,11 +61,10 @@ public class LogController extends ActionSupport implements SessionAware, ModelD
     public String login() {
         if(getFrom() != null){
             Usuario user = uDAO.usuarioConMail(u.getMail());
-            System.out.println("*****USER: " + user);
             if(user != null){
                 sessionAttributes.put("usuario", user);
                 siguiente = (String) sessionAttributes.get("paginaSiguiente");
-                sessionAttributes.put("paginaSiguiente",null);
+                sessionAttributes.put("paginaSiguiente","/index");
                 return SUCCESS;
             }
             addFieldError("usuarioInexistente",getText("user.notExists"));

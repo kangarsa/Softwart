@@ -6,7 +6,6 @@
 
 <%@taglib uri="/struts-tags" prefix="s"%>
 <s:iterator value="listaPublicaciones">
-    <s:property value="listaPublicaciones"></s:property>
 <article class="is-page-content">
     <header>
         <h2><s:property value="titulo"/></h2>
@@ -22,6 +21,14 @@
         <p><s:property value="contenido"/></p>
     </section>
 
+    <section>
+            <p>Tags: 
+        <s:iterator value="tags">
+            <s:property value="texto"/> 
+        </s:iterator>
+            </p>
+    </section>
+    
     <section>
         <s:iterator value="comentarios">
             <h3><s:property value="titulo"/></h3>

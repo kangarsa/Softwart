@@ -19,4 +19,5 @@ public interface TagDAO {
     public boolean editar(Tag tag);
     public void eliminar(Tag tag);
     public Tag getTagById(Integer idTag);
+    public Tag buscarPorTexto(String textoTag);
 }

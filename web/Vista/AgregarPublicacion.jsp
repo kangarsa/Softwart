@@ -20,6 +20,7 @@
             <s:textfield label="Titulo" name="publicacion.titulo" size="50" maxlength="50"/>
             <s:textarea label="Descripcion" name="publicacion.descripcion" cols="60" rows="5"/>
             <s:textarea label="Contenido" name="publicacion.contenido" cols="60" rows="20"/>            
+            <s:textarea label="Tags" name="tag" cols="40" rows="5"/>
             <s:submit value="Agregar"/>
         </s:form>
         <hr>

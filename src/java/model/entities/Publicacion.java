@@ -39,7 +39,7 @@ public class Publicacion implements java.io.Serializable {
     @OneToOne
     private Evento evento;
 
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     private List<Tag> tags;
     @OneToMany(mappedBy = "publicacion")
     private List<Voto> votos;
@@ -54,6 +54,7 @@ public class Publicacion implements java.io.Serializable {
     public Publicacion() {
         this.fechaSubida = new Date();
         this.comentarios = new ArrayList<Comentario>();
+        this.tags = new ArrayList<Tag>();
     }
 
     public Integer getIdPublicacion() {

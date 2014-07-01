@@ -19,12 +19,7 @@
         <s:fielderror>
             <s:param>usuarioInexistente</s:param>
         </s:fielderror>
-        <s:form action="login" method="post">
-            <s:textfield name="mail" label="E-mail"></s:textfield>
-            <s:textfield name="clave" label="Clave" type="password"></s:textfield>
-            <s:hidden name="from" value="login" />
-            <s:submit value="Ingresar"></s:submit>
-        </s:form>
+        <s:include value="login_form.jsp" />
         <s:include value="footer.jsp" />
     </body>
 </html>

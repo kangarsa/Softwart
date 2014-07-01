@@ -74,7 +74,6 @@ public class ComentarioController extends ActionSupport implements ModelDriven<C
     }
 
     public Publicacion getPublicacion() {
-        System.out.println("GETPUBLICACION: " + publicacion);
         return publicacion;
     }
 
@@ -106,7 +105,6 @@ public class ComentarioController extends ActionSupport implements ModelDriven<C
     }
     
     public String agregar(){
-        System.out.println("ID PUBLICACION COMENTADA: " + idPublicacion);
         publicacion = publicacionDAO.getPublicacionById(idPublicacion);
         publicacion.getComentarios().add(comentario);
         comentario.setPublicacion(publicacion);
@@ -124,13 +122,8 @@ public class ComentarioController extends ActionSupport implements ModelDriven<C
     }
 
     public String listarDePublicacion(){
-        System.out.println("ID PUBLICACION: " + idPublicacion);
-       // listaComentarios=comentarioDAO.listarDePublicacion(idPublicacion);
-
         publicacion = publicacionDAO.getPublicacionById(idPublicacion);
         listaComentarios= publicacion.getComentarios();
-        System.out.println("LISTA COMENTARIOS FE: " +  listaComentarios );
-        System.out.println("PUBLICACION: " + publicacion.getTitulo());
         return "fin";
     }
 
@@ -152,7 +145,6 @@ public class ComentarioController extends ActionSupport implements ModelDriven<C
     
     public List<Publicacion> getPublicacionesComentables() {
         List<Publicacion> listaPublicaciones = comentarioDAO.publicacionesComentablesPara(u);
-        System.out.println(listaPublicaciones);
         return listaPublicaciones;
     }
     

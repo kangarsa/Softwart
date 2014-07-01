@@ -24,6 +24,7 @@
             <s:textfield readonly="true" label="Titulo" name="publicacion.titulo" size="20" maxlength="30"/>
             <s:textarea readonly="true" label="Descripcion" name="publicacion.descripcion" cols="60" rows="5"/>
             <s:textarea readonly="true" label="Contenido" name="publicacion.contenido" cols="60" rows="5"/>
+            <s:textarea readonly="true" label="Tags" name="tags" cols="30" rows="5"/> 
         </s:form>
         <hr>
         <h1>Comentar</h1>

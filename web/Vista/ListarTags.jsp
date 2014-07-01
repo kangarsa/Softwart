@@ -32,8 +32,8 @@
                     <td><s:property value="idTag"/></td>
                     <td><s:property value="texto"/></td>
                     <td><s:property value="cantidad"/></td>
-                    <td><a href="<s:url action="editarTag" > <s:param name="idTag"><s:property value="idTag"/></s:param></s:url>"><img src="images/tema_1/edit.gif" alt="editar"></a></td>
-                    <td><a href="<s:url action="eliminarTag" > <s:param name="idTag"><s:property value="idTag"/></s:param></s:url>"><img src="images/tema_1/delete.gif" alt="borrar"></a></td>
+                    <td><a href="<s:url action="editarTag" > <s:param name="idTag"><s:property value="idTag"/></s:param></s:url>"><img src="../images/tema_1/edit.gif" alt="editar"></a></td>
+                    <td><a href="<s:url action="eliminarTag" > <s:param name="idTag"><s:property value="idTag"/></s:param></s:url>"><img src="../images/tema_1/delete.gif" alt="borrar"></a></td>
                 </tr>
             </s:iterator>
         </table>

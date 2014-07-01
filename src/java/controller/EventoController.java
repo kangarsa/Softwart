@@ -44,14 +44,12 @@ public class EventoController implements ModelDriven<Evento>{
     
     public String listar(){
         listaEventos=eventoDAO.listar();
-        System.out.println("LISTAR EVENTOS: " + listaEventos);
         return "fin";
     }
     
     public String agregar(){
         Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
         Usuario usuarioPublicador = (Usuario) sessionAttributes.get("usuario");
-        System.out.println("USUARIOPUBLICADOR: " + usuarioPublicador.getNombre());
         evento.setEventoByUsuarioPublicador(usuarioPublicador);
         if(eventoDAO.agregar(evento))
             msg="Se agrego un evento nuevo";

@@ -13,8 +13,11 @@ import java.util.List;
 import java.util.Map;
 import model.dao.PublicacionDAO;
 import model.dao.PublicacionDaoHibernateJPA;
+import model.dao.TagDAO;
+import model.dao.TagDaoHibernateJPA;
 import model.entities.Comentario;
 import model.entities.Publicacion;
+import model.entities.Tag;
 import model.entities.Usuario;
 
 /**
@@ -26,6 +29,10 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     List<Publicacion> listaPublicacion= new ArrayList();
     List<Comentario> listaDeComentarios= new ArrayList();
     PublicacionDAO publicacionDAO;
+    TagDAO tagDAO;
+    String tag;
+    String[] tags;
+    List<Tag> listaDeTags= new ArrayList<Tag>();
     String msg="";
     
     /**
@@ -39,6 +46,7 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     
     public PublicacionController(){
         publicacionDAO=new PublicacionDaoHibernateJPA();
+        tagDAO=new TagDaoHibernateJPA();
     }
     
     public String agregarInicio(){
@@ -53,12 +61,29 @@ public class PublicacionController implements ModelDriven<Publicacion>{
         Map<String, Object> sessionAttributes = ActionContext.getContext().getSession();
         Usuario usuarioPublicador = (Usuario) sessionAttributes.get("usuario");
         publicacion.setUsuarioPublicador(usuarioPublicador);
+        tag = tag.replaceAll(",", " ").replaceAll("( )+", " ");
+        tags = tag.split(" ");
+        for (String tag1 : tags) {
+            Tag t = tagDAO.buscarPorTexto(tag1);
+            if(t==null){
+                t = new Tag(tag1);
+                tagDAO.agregar(t);
+            }
+            publicacion.getTags().add(t);
+            
+        }
         if(publicacionDAO.agregar(publicacion))
             msg="Se agrego una publicacion nueva";
         else
             msg="Ocurrio un error al agregar publicacion";
         return "fin";
     }
+    
+    public String listarPorTag(){
+        listaPublicacion.addAll(tagDAO.buscarPorTexto(tag).getPublicacions());
+        return "fin";
+    }   
+    
     
     public String listar(){
         listaPublicacion=publicacionDAO.listar();
@@ -83,7 +108,6 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     
     public String listarComentarios(Publicacion publicacion){
         listaDeComentarios = (List<Comentario>) publicacionDAO.listarComentarios(publicacion);
-        System.out.println("LISTAR COMENTARIOS CONTROLLER: " + listaDeComentarios);
         return "fin";
     }
     
@@ -110,6 +134,14 @@ public class PublicacionController implements ModelDriven<Publicacion>{
     public String mostrar(){
         publicacion = publicacionDAO.getPublicacionById(publicacion.getIdPublicacion());
         return "fin";
+    }
+    
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
     
 }

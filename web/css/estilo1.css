@@ -300,3 +300,30 @@ img.imagen{
     
 }
 
+#loginBox{
+    left: 45%;
+    position: absolute;
+    top:59px;
+    z-index: 29;
+    border: #e3daa8 double 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    background-color: white;
+    visibility: hidden;
+    vertical-align: baseline;
+}
+
+#message{
+    left: 5%;
+    position: absolute;
+    top:10px;
+    z-index: 29;
+    border: #e3daa8 double 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    background-color: white;
+    visibility: hidden;
+    vertical-align: baseline;
+}

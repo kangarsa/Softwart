@@ -30,10 +30,18 @@ public class Tag implements java.io.Serializable {
     public Tag() {
     }
 
+    public Tag(String texto) {
+        this.texto = texto;
+    }
+
     public Tag(String texto, Integer cantidad, Set publicacions) {
         this.texto = texto;
         this.cantidad = cantidad;
         this.publicacions = publicacions;
+    }
+    
+    public boolean equals(Object t){
+        return ((Tag) t).getTexto().equals(this.getTexto());
     }
 
     public Integer getIdTag() {

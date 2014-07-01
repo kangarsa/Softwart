@@ -26,6 +26,16 @@
 
                     <!-- Sidebar -->
 
+                    <!-- Tags Search -->
+                    
+                    <section>
+                        <h2 class="major"><span>Buscar por Tags</span></h2>
+                        <s:form action="buscarPorTagsFE" method="get">
+                            <s:textfield label="Tag" name="tag" size="20" maxlength="30"/>
+                            <s:submit value="Buscar"/>
+                        </s:form>
+                    </section>
+                    
                     <!-- Recent Posts -->
                     <section>
                         <h2 class="major"><span>Recent Posts</span></h2>
